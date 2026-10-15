@@ -5,8 +5,14 @@
  *   1. saves each submission as a row in this Google Sheet,
  *   2. emails the full details to the restaurant's Gmail,
  *   3. texts the owner's Verizon phone a short "check your email" alert.
+ * Also serves the website's "What's Happening" events from the Events tab.
  *
- * SETUP (one time, signed in as crewittscreek@gmail.com):
+ * EVENTS: edit the Events tab. Only rows with Status "Published" show on the site.
+ *   Repeats = Weekly (fill Day(s), e.g. "Wednesday" or "Tuesday, Wednesday, Thursday, Friday")
+ *          or Once   (fill Date). One-time events disappear from the site after their date.
+ *   The weekly Facebook helper adds new finds as "Needs review" and emails you.
+ *
+ * SETUP (one time, signed in to the Google account that owns this sheet):
  *   1. Paste this whole file into Extensions > Apps Script (replace everything).
  *   2. Fill in OWNER_CELL below with the owner's 10-digit Verizon number.
  *      (Only stored here, never on the public website.)
@@ -25,7 +31,12 @@ const OWNER_EMAIL = 'crewittscreek@gmail.com';
 const OWNER_CELL = '';            // e.g. '8595551234' (10 digits, Verizon)
 const SMS_GATEWAY = '@vtext.com'; // Verizon email-to-text
 const SEND_TEXTS = true;          // set false to turn texts off
+const EVENT_KEY = '';             // private key the weekly events helper uses to add events
+const TIMEZONE = 'America/New_York';
 // ===================================================================
+
+const EVENT_HEADERS = ['Event', 'Repeats', 'Day(s)', 'Date', 'Time', 'Details', 'Status', 'Source', 'Added'];
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const TABS = {
   contact: {
@@ -60,6 +71,37 @@ function setup() {
   sendTest();
 }
 
+/** Run once: creates the Events tab and adds the events verified so far. Safe to re-run. */
+function setupEvents() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName('Events');
+  const isNew = !sh;
+  if (!sh) sh = ss.insertSheet('Events');
+  sh.getRange(1, 1, 1, EVENT_HEADERS.length).setValues([EVENT_HEADERS])
+    .setFontWeight('bold').setBackground('#0D1F3C').setFontColor('#ffffff');
+  sh.setFrozenRows(1);
+  const n = sh.getMaxRows() - 1;
+  sh.getRange(2, 2, n, 1).setDataValidation(SpreadsheetApp.newDataValidation()
+    .requireValueInList(['Weekly', 'Once'], true).setAllowInvalid(false).build());
+  sh.getRange(2, 4, n, 1).setNumberFormat('mmm d, yyyy');
+  sh.getRange(2, 7, n, 1).setDataValidation(SpreadsheetApp.newDataValidation()
+    .requireValueInList(['Published', 'Needs review', 'Hidden'], true).setAllowInvalid(false).build());
+  if (isNew || sh.getLastRow() < 2) {
+    const now = new Date();
+    sh.getRange(2, 1, 2, EVENT_HEADERS.length).setValues([
+      ['Happy Hour', 'Weekly', 'Tuesday, Wednesday, Thursday, Friday', '', '2–6pm',
+        'Bone-in wings, coconut shrimp, Cajun truffle fries and more at happy hour prices.',
+        'Published', 'https://crewittscreek.com/menu', now],
+      ['WINGO Wednesday + Singo Music Bingo', 'Weekly', 'Wednesday', '', '',
+        'Wing specials and Singo music bingo. Check our Facebook for this week’s details.',
+        'Published', 'https://www.facebook.com/crewittscreek/', now],
+    ]);
+  }
+  [1, 3, 6].forEach(function (c) { sh.setColumnWidth(c, c === 6 ? 360 : 220); });
+  [2, 4, 5, 7, 9].forEach(function (c) { sh.setColumnWidth(c, 120); });
+  sh.setColumnWidth(8, 240);
+}
+
 /** Sends a test email + text so you can confirm alerts arrive. */
 function sendTest() {
   notifyOwner_('contact', {
@@ -77,6 +119,8 @@ function doPost(e) {
 
     // Spam trap: real people never fill the hidden "website" field.
     if (p.website) return json_({ ok: true });
+
+    if (p.formType === 'event') return addEvent_(p);
 
     const type = p.formType === 'application' ? 'application' : 'contact';
     const data = {
@@ -122,9 +166,112 @@ function doPost(e) {
   }
 }
 
-/** Lets you open the /exec URL in a browser to check it is live. */
-function doGet() {
+/**
+ * GET /exec            -> health check
+ * GET /exec?events=1   -> published, upcoming events for the website
+ * GET /exec?events=all&key=EVENT_KEY -> every row (used by the weekly helper to avoid duplicates)
+ */
+function doGet(e) {
+  const p = (e && e.parameter) || {};
+  if (p.events === 'all') {
+    if (!EVENT_KEY || p.key !== EVENT_KEY) return json_({ ok: false, error: 'unauthorized' });
+    return json_({ ok: true, events: readEvents_(true) });
+  }
+  if (p.events) {
+    const cache = CacheService.getScriptCache();
+    const hit = cache.get('events_v1');
+    if (hit) return ContentService.createTextOutput(hit).setMimeType(ContentService.MimeType.JSON);
+    const out = JSON.stringify({ ok: true, events: readEvents_(false) });
+    cache.put('events_v1', out, 120);
+    return ContentService.createTextOutput(out).setMimeType(ContentService.MimeType.JSON);
+  }
   return json_({ ok: true, service: 'Crewitts Creek website inbox' });
+}
+
+/** Clears the 2-minute events cache right after the Events tab is edited. */
+function onEdit(e) {
+  if (e && e.range && e.range.getSheet().getName() === 'Events') {
+    CacheService.getScriptCache().remove('events_v1');
+  }
+}
+
+function readEvents_(all) {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Events');
+  if (!sh || sh.getLastRow() < 2) return [];
+  const today = Utilities.formatDate(new Date(), TIMEZONE, 'yyyy-MM-dd');
+  const rows = sh.getRange(2, 1, sh.getLastRow() - 1, EVENT_HEADERS.length).getValues();
+  const out = [];
+  rows.forEach(function (r) {
+    const title = String(r[0] || '').trim();
+    if (!title) return;
+    const status = String(r[6] || '').trim();
+    const repeats = String(r[1] || '').trim().toLowerCase() === 'once' ? 'once' : 'weekly';
+    const days = String(r[2] || '').split(/[,/&]+|\band\b/).map(function (d) {
+      const k = d.trim().slice(0, 3).toLowerCase();
+      return DAYS.filter(function (D) { return D.slice(0, 3).toLowerCase() === k; })[0];
+    }).filter(Boolean);
+    const date = r[3] instanceof Date ? Utilities.formatDate(r[3], TIMEZONE, 'yyyy-MM-dd') : String(r[3] || '').trim();
+    if (!all) {
+      if (status !== 'Published') return;
+      if (repeats === 'once' && (!date || date < today)) return;
+      if (repeats === 'weekly' && !days.length) return;
+    }
+    const ev = { title: title, repeats: repeats, days: days, date: date,
+      time: String(r[4] || '').trim(), details: String(r[5] || '').trim() };
+    if (all) { ev.status = status; ev.source = String(r[7] || ''); }
+    out.push(ev);
+  });
+  out.sort(function (a, b) {
+    if (a.repeats !== b.repeats) return a.repeats === 'once' ? -1 : 1;
+    if (a.repeats === 'once') return a.date < b.date ? -1 : 1;
+    return DAYS.indexOf(a.days[0]) - DAYS.indexOf(b.days[0]);
+  });
+  return out;
+}
+
+/** Weekly helper adds events here. They always arrive as "Needs review". */
+function addEvent_(p) {
+  if (!EVENT_KEY || p.key !== EVENT_KEY) return json_({ ok: false, error: 'unauthorized' });
+  const title = clean_(p.title, 120);
+  const repeats = String(p.repeats || '').toLowerCase() === 'weekly' ? 'Weekly' : 'Once';
+  const days = clean_(p.days, 120);
+  const date = clean_(p.date, 20);            // yyyy-mm-dd for one-time events
+  if (!title) return json_({ ok: false, error: 'missing title' });
+  if (repeats === 'Once' && !/^\d{4}-\d{2}-\d{2}$/.test(date)) return json_({ ok: false, error: 'date must be yyyy-mm-dd' });
+  if (repeats === 'Weekly' && !days) return json_({ ok: false, error: 'missing day(s)' });
+
+  const lock = LockService.getScriptLock();
+  lock.waitLock(15000);
+  try {
+    const existing = readEvents_(true);
+    const norm = function (s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ''); };
+    const dup = existing.some(function (ev) {
+      return norm(ev.title) === norm(title) && (repeats === 'Weekly' ? ev.repeats === 'weekly' : ev.date === date);
+    });
+    if (dup) return json_({ ok: true, duplicate: true });
+
+    const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Events');
+    if (!sh) throw new Error('Missing Events tab — run setupEvents() first.');
+    const dateCell = repeats === 'Once' ? new Date(date + 'T12:00:00') : '';
+    sh.appendRow([title, repeats, repeats === 'Weekly' ? days : '', dateCell, clean_(p.time, 40),
+      clean_(p.details, 400), 'Needs review', clean_(p.source, 300), new Date()].map(safeCell_));
+  } finally {
+    lock.releaseLock();
+  }
+
+  MailApp.sendEmail({
+    to: OWNER_EMAIL,
+    subject: 'Website event needs review: ' + title,
+    htmlBody: '<div style="font-family:Arial,sans-serif;font-size:14px">' +
+      '<p>The weekly Facebook check found an event for the website:</p>' +
+      '<p><b>' + esc_(title) + '</b><br>' + esc_(repeats === 'Weekly' ? 'Every ' + days : date) +
+      (p.time ? ' · ' + esc_(p.time) : '') + '<br>' + esc_(p.details || '') + '</p>' +
+      '<p>It is <b>not on the website yet</b>. To publish it, open the Events tab and change its Status to ' +
+      '<b>Published</b> (or delete the row).</p>' +
+      '<p><a href="' + SpreadsheetApp.getActiveSpreadsheet().getUrl() + '">Open the sheet</a></p></div>',
+    name: 'Crewitts Creek Website',
+  });
+  return json_({ ok: true, added: true });
 }
 
 // ----- helpers -----------------------------------------------------
