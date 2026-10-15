@@ -5,21 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Crewitts Creek Kitchen & Bar in Independence, KY — rated 4.5 stars by 1,400+ Google reviewers. Famous mac & cheese, scratch-made comfort food, craft beer, patio seating, and trivia nights.">
 <title>Crewitts Creek Kitchen & Bar</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="canonical" href="https://sj5809.github.io/crewitts-creek/">
+<meta name="theme-color" content="#0D1F3C">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Crewitts Creek Kitchen & Bar">
+<meta property="og:description" content="Scratch-made comfort food, famous mac & cheese and cold beer in Independence, KY. 4.5 stars from 1,400+ Google reviews.">
+<meta property="og:image" content="https://sj5809.github.io/crewitts-creek/images/exterior.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1F3C'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%235AABF0' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/playfair-display-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400 900;font-display:swap;src:url(fonts/playfair-display-latin-600-italic.woff2) format('woff2')}
+.ti{width:1em;height:1em;display:inline-block;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#0D1F3C;--blue:#2B7FD4;--lb:#5AABF0;--bg:#F0F4FA;--text:#1C1C1C;--muted:#5a7a9a;--white:#fff;--border:#D0DCF0}
+:root{--sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;--navy:#0D1F3C;--blue:#1d6bb8;--lb:#5AABF0;--bg:#F0F4FA;--text:#1C1C1C;--muted:#506d88;--white:#fff;--border:#D0DCF0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;width:100%;overflow-x:hidden}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;width:100%;overflow-x:hidden}
 .page{display:none}.page.active{display:block}
 
 /* TOP BAR */
 .topbar{background:#07111f;color:#7a9ab8;font-size:12px;padding:6px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
 .topbar a{color:#7a9ab8;text-decoration:none;transition:color .15s}.topbar a:hover{color:#fff}
 .tb-l,.tb-r{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.tb-l a,.tb-r a{display:flex;align-items:center;gap:5px}
+.tb-l a,.tb-r a{display:flex;align-items:center;gap:5px;min-height:24px}
+.tb-r a{min-width:24px;justify-content:center}
 
 /* NAV */
 nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 14px rgba(0,0,0,.4);flex-wrap:wrap;gap:4px}
@@ -31,7 +41,7 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 
 /* HERO */
 .hero{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('images/exterior.png');background-size:cover;background-position:center 30%}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,17,35,.70) 0%,rgba(13,31,60,.88) 100%)}
 .hero-content{position:relative;z-index:2;padding:80px 24px 70px;max-width:640px;margin:0 auto}
 .eyebrow{color:var(--lb);font-size:11px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;margin-bottom:14px}
@@ -39,8 +49,8 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .hero h1 em{color:var(--lb);font-style:italic}
 .hero p{color:#c0d8f0;font-size:clamp(14px,2.5vw,17px);max-width:480px;margin:0 auto 36px;line-height:1.75}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-family:'Inter',sans-serif}
-.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:#2270bc;transform:translateY(-1px)}
+.btn{padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-family:var(--sans)}
+.btn-p{background:var(--blue);color:#fff}.btn-p:hover{background:#155a9e;transform:translateY(-1px)}
 .btn-o{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45)}.btn-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.75)}
 .btn-sm{padding:10px 20px;font-size:14px}
 
@@ -56,7 +66,7 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .about{background:#fff;padding:60px 20px}
 .about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .sec-label{color:var(--blue);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,34px);color:var(--navy);margin-bottom:14px;line-height:1.2}
+.sec-title{font-weight:600;font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,34px);color:var(--navy);margin-bottom:14px;line-height:1.2}
 .about-text p{color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:12px}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
 .stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
@@ -74,8 +84,8 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .c-icon .ti{font-size:21px;color:var(--blue)}
 .card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);margin-bottom:8px}
 .card p{color:var(--muted);font-size:13px;margin-bottom:18px;line-height:1.65}
-.btn-c{background:var(--blue);color:#fff;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:background .15s;font-family:'Inter',sans-serif}
-.btn-c:hover{background:#2270bc}
+.btn-c{display:inline-block;text-decoration:none;background:var(--blue);color:#fff;padding:9px 18px;border-radius:7px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:background .15s;font-family:var(--sans)}
+.btn-c:hover{background:#155a9e}
 
 /* HOURS STRIP */
 .hrs{background:var(--navy);padding:56px 20px}
@@ -84,19 +94,19 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .ht{width:100%;border-collapse:collapse}
 .ht td{padding:5px 0;font-size:13px;color:#90b0cc}
 .ht td:last-child{text-align:right;color:#c8dded}
-.ht tr.cls td{color:#2d4a62}
+.ht tr.cls td{color:#8ea9c2;font-style:italic}
 .call-link{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,30px);color:var(--lb);text-decoration:none;display:block;margin-bottom:10px;font-weight:700}
 .call-link:hover{color:#fff}
-.call-sub{color:#4a6a8a;font-size:13px;line-height:1.7}
+.call-sub{color:#9ab4cc;font-size:13px;line-height:1.7}
 
 /* VIBE BANNER */
 .vibe{background:linear-gradient(135deg,#071120,#0D1F3C);padding:44px 20px;text-align:center;border-top:2px solid rgba(43,127,212,.2)}
 .vibe h2{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(20px,3.5vw,26px);margin-bottom:8px}
 .vibe p{color:#7a9ab8;font-size:14px;max-width:460px;margin:0 auto 24px}
 .soc-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.soc-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;border:none;cursor:pointer;transition:opacity .15s,transform .1s;font-family:'Inter',sans-serif}
+.soc-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;border:none;cursor:pointer;transition:opacity .15s,transform .1s;font-family:var(--sans)}
 .soc-btn:hover{opacity:.88;transform:translateY(-1px)}
-.btn-fb{background:#1877F2;color:#fff}
+.btn-fb{background:#0f5fd0;color:#fff}
 .btn-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
 
 /* LOCATION */
@@ -132,7 +142,7 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .mi{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:box-shadow .15s}
 .mi:hover{box-shadow:0 4px 16px rgba(13,31,60,.08)}
 .mi-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px}
-.mi h4{font-weight:600;font-size:14px;color:var(--navy);line-height:1.3}
+.mi h3{font-weight:600;font-size:14px;color:var(--navy);line-height:1.3}
 .price{font-weight:700;color:var(--blue);font-size:13px;white-space:nowrap;flex-shrink:0}
 .mi p{color:var(--muted);font-size:12px;line-height:1.55}
 
@@ -142,7 +152,7 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .dr-card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .dr-hd{background:var(--navy);padding:14px 18px;display:flex;align-items:center;gap:9px}
 .dr-hd .ti{font-size:19px;color:var(--lb)}
-.dr-hd h3{font-family:'Playfair Display',serif;color:#fff;font-size:17px}
+.dr-hd h2{font-family:'Playfair Display',serif;color:#fff;font-size:17px}
 .dr-body{padding:14px 18px}
 .dr-note{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:10px}
 .di{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
@@ -155,16 +165,16 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .fw{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px}
 .fg{margin-bottom:16px}
 .fg label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:5px}
-.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:7px;font-size:14px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,127,212,.1)}
 .fg textarea{resize:vertical;min-height:96px}
-.fsub{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s;margin-top:4px;font-family:'Inter',sans-serif}
-.fsub:hover{background:#2270bc}
+.fsub{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s;margin-top:4px;font-family:var(--sans)}
+.fsub:hover{background:#155a9e}
 .f-ok{display:none;background:#e8f5e9;border:1px solid #81c784;border-radius:8px;padding:14px 18px;color:#2e7d32;font-size:13px;font-weight:500;text-align:center;margin-top:14px}
 .f-ok.show{display:block}
 .c-aside{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px}
 .ab{margin-bottom:20px}.ab:last-child{margin-bottom:0}
-.ab h4{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.ab h2{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
 .aside-ph{font-size:21px;font-family:'Playfair Display',serif;color:var(--blue);font-weight:700;text-decoration:none;display:block}
 .aside-ph:hover{color:var(--navy)}
 .adiv{border:none;border-top:1px solid var(--border);margin:16px 0}
@@ -173,7 +183,7 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .aht{width:100%;border-collapse:collapse}
 .aht td{padding:3px 0;font-size:12px;color:var(--text)}
 .aht td:last-child{text-align:right;color:var(--muted)}
-.aht tr.cls td{color:#ccc}
+.aht tr.cls td{color:#767676;font-style:italic}
 .soc-sm{display:flex;gap:8px;margin-top:10px}
 .soc-sm a{width:34px;height:34px;border-radius:7px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:16px;transition:all .15s}
 .soc-sm a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -189,27 +199,27 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 .fg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:32px;max-width:920px;margin:0 auto 32px}
 .fb-brand{font-family:'Playfair Display',serif;color:#fff;font-size:19px;font-weight:700;margin-bottom:9px}
 .fb-brand span{color:var(--lb)}
-.fc h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--lb);margin-bottom:13px;font-weight:600}
+.fc h2{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--lb);margin-bottom:13px;font-weight:600}
 .fc a{font-size:13px;color:#7a9ab8;text-decoration:none;line-height:2.2;display:block}
 .fc a:hover{color:#fff}
 .fc p{font-size:13px;color:#7a9ab8;line-height:1.7}
 .fc .apply-btn{display:inline-block;background:var(--blue);color:#fff !important;padding:8px 18px;border-radius:6px;font-weight:600;margin-top:10px;font-size:13px;line-height:1.4;cursor:pointer}
-.fc .apply-btn:hover{background:#2270bc}
+.fc .apply-btn:hover{background:#155a9e}
 .fsoc{display:flex;gap:8px;margin-top:12px}
 .fsoc a{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:#7a9ab8;text-decoration:none;font-size:15px;transition:background .15s}
 .fsoc a:hover{background:var(--blue);color:#fff}
 .fht{width:100%;border-collapse:collapse}
 .fht td{padding:2px 0;font-size:12px;color:#7a9ab8}
 .fht td:last-child{text-align:right;padding-left:10px;color:#aec4d8}
-.fht tr.cls td{color:#1e3450}
-.f-btm{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;text-align:center;font-size:12px;color:#1e3450;max-width:920px;margin:0 auto}
+.fht tr.cls td{color:#8aa3bb;font-style:italic}
+.f-btm{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;text-align:center;font-size:12px;color:#8aa3bb;max-width:920px;margin:0 auto}
 
 
 /* RATING BADGE + REVIEWS */
 .rate-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:22px;backdrop-filter:blur(4px)}
 .rate-badge .stars{color:#FFC94D;letter-spacing:1px}
 .rate-badge:hover{background:rgba(255,255,255,.18)}
-.reviews{background:#fff;padding:64px 20px}
+.reviews{background:#fff;padding:64px 20px;scroll-margin-top:60px}
 .rev-head{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-bottom:30px}
 .rev-score{text-align:center;background:var(--navy);color:#fff;border-radius:16px;padding:22px 30px}
 .rev-score .big{font-family:'Playfair Display',serif;font-size:54px;font-weight:700;line-height:1}
@@ -230,7 +240,11 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 .amen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:22px}
 .amen-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--navy);font-weight:500}
 .amen-item .ti{font-size:19px;color:var(--blue)}
-.loc-map{padding:0;overflow:hidden;min-height:300px;background:var(--navy)}
+.loc-map{padding:0;overflow:hidden;min-height:300px;background:linear-gradient(135deg,#0D1F3C,#163357)}
+.map-facade{height:100%;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 24px}
+.map-facade .ti{font-size:46px;color:var(--lb);margin-bottom:12px}
+.map-facade h3{font-family:'Playfair Display',serif;color:#fff;font-size:22px;margin-bottom:6px}
+.map-facade p{color:#9ab4cc;font-size:13px;margin-bottom:20px;line-height:1.7}
 .loc-map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
 @media(max-width:780px){.rev-head{grid-template-columns:1fr}.rev-score{justify-self:start}}
 
@@ -243,6 +257,9 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 @media(max-width:520px){
   .photo-strip{grid-template-columns:1fr;height:auto}
   .strip-img{height:220px}
+  .strip-img.ext{display:none}
+  .topbar{flex-wrap:nowrap}
+  .tb-l a:first-child{display:none}
   .btns{flex-direction:column;align-items:center}
   .btns .btn{width:100%;max-width:280px;justify-content:center}
   .perks{grid-template-columns:1fr}
@@ -271,28 +288,29 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 </script>
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="i-armchair" viewBox="0 0 24 24"><path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z" /> <path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5" /> <path d="M6 19v2" /> <path d="M18 19v2" /></symbol><symbol id="i-baby-carriage" viewBox="0 0 24 24"><path d="M8 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M18 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M2 5h2.5l1.632 4.897a6 6 0 0 0 5.693 4.103h2.675a5.5 5.5 0 0 0 0 -11h-.5v6" /> <path d="M6 9h14" /> <path d="M9 17l1 -3" /> <path d="M16 14l1 3" /></symbol><symbol id="i-beer" viewBox="0 0 24 24"><path d="M9 21h6a1 1 0 0 0 1 -1v-3.625c0 -1.397 .29 -2.775 .845 -4.025l.31 -.7c.556 -1.25 .845 -2.253 .845 -3.65v-4a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v4c0 1.397 .29 2.4 .845 3.65l.31 .7a9.931 9.931 0 0 1 .845 4.025v3.625a1 1 0 0 0 1 1z" /> <path d="M6 8h12" /></symbol><symbol id="i-bottle" viewBox="0 0 24 24"><path d="M10 5h4v-2a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v2z" /> <path d="M14 3.5c0 1.626 .507 3.212 1.45 4.537l.05 .07a8.093 8.093 0 0 1 1.5 4.694v6.199a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2v-6.2c0 -1.682 .524 -3.322 1.5 -4.693l.05 -.07a7.823 7.823 0 0 0 1.45 -4.537" /> <path d="M7 14.803a2.4 2.4 0 0 0 1 -.803a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 1 -.805" /></symbol><symbol id="i-bowl" viewBox="0 0 24 24"><path d="M4 8h16a1 1 0 0 1 1 1v.5c0 1.5 -2.517 5.573 -4 6.5v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1c-1.687 -1.054 -4 -5 -4 -6.5v-.5a1 1 0 0 1 1 -1z" /></symbol><symbol id="i-brand-facebook" viewBox="0 0 24 24"><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></symbol><symbol id="i-brand-google" viewBox="0 0 24 24"><path d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945z" /></symbol><symbol id="i-brand-instagram" viewBox="0 0 24 24"><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /> <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M16.5 7.5l0 .01" /></symbol><symbol id="i-bread" viewBox="0 0 24 24"><path d="M18 4a3 3 0 0 1 2 5.235v8.765a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-8.764a3 3 0 0 1 1.824 -5.231h12.176v-.005z" /></symbol><symbol id="i-calendar-check" viewBox="0 0 24 24"><path d="M11.5 21h-5.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6" /> <path d="M16 3v4" /> <path d="M8 3v4" /> <path d="M4 11h16" /> <path d="M15 19l2 2l4 -4" /></symbol><symbol id="i-car" viewBox="0 0 24 24"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" /></symbol><symbol id="i-cheese" viewBox="0 0 24 24"><path d="M4.519 20.008l16.481 -.008v-3.5a2 2 0 1 1 0 -4v-3.5h-16.722" /> <path d="M21 9l-9.385 -4.992c-2.512 .12 -4.758 1.42 -6.327 3.425c-1.423 1.82 -2.288 4.221 -2.288 6.854c0 2.117 .56 4.085 1.519 5.721" /> <path d="M15 13v.01" /> <path d="M8 13v.01" /> <path d="M11 16v.01" /></symbol><symbol id="i-chef-hat" viewBox="0 0 24 24"><path d="M12 3c1.918 0 3.52 1.35 3.91 3.151a4 4 0 0 1 2.09 7.723l0 7.126h-12v-7.126a4 4 0 1 1 2.092 -7.723a4 4 0 0 1 3.908 -3.151z" /> <path d="M6.161 17.009l11.839 -.009" /></symbol><symbol id="i-circle-check" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /> <path d="M9 12l2 2l4 -4" /></symbol><symbol id="i-clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 7v5l3 3" /></symbol><symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 11h14v-3h-14z" /> <path d="M17.5 11l-1.5 10h-8l-1.5 -10" /> <path d="M6 8v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1" /> <path d="M15 5v-2" /></symbol><symbol id="i-device-tv" viewBox="0 0 24 24"><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /> <path d="M16 3l-4 4l-4 -4" /></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path d="M7.502 19.423c2.602 2.105 6.395 2.105 8.996 0c2.602 -2.105 3.262 -5.708 1.566 -8.546l-4.89 -7.26c-.42 -.625 -1.287 -.803 -1.936 -.397a1.376 1.376 0 0 0 -.41 .397l-4.893 7.26c-1.695 2.838 -1.035 6.441 1.567 8.546z" /></symbol><symbol id="i-egg-fried" viewBox="0 0 24 24"><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M14 3a5 5 0 0 1 4.872 6.13a3 3 0 0 1 .178 5.681a3 3 0 1 1 -4.684 3.626a5 5 0 1 1 -8.662 -5a5 5 0 1 1 4.645 -8.856a4.982 4.982 0 0 1 3.651 -1.585z" /></symbol><symbol id="i-feather" viewBox="0 0 24 24"><path d="M4 20l10 -10m0 -5v5h5m-9 -1v5h5m-9 -1v5h5m-5 -5l4 -4l4 -4" /> <path d="M19 10c.638 -.636 1 -1.515 1 -2.486a3.515 3.515 0 0 0 -3.517 -3.514c-.97 0 -1.847 .367 -2.483 1m-3 13l4 -4l4 -4" /></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 12c2 -2.96 0 -7 -1 -8c0 3.038 -1.773 4.741 -3 6c-1.226 1.26 -2 3.24 -2 5a6 6 0 1 0 12 0c0 -1.532 -1.056 -3.94 -2 -5c-1.786 3 -2.791 3 -4 2z" /></symbol><symbol id="i-glass-cocktail" viewBox="0 0 24 24"><path d="M8 21h8" /> <path d="M12 15v6" /> <path d="M12 5m-7 0a7 2 0 1 0 14 0a7 2 0 1 0 -14 0" /> <path d="M5 5v.388c0 .432 .126 .853 .362 1.206l5 7.509c.633 .951 1.88 1.183 2.785 .517c.191 -.141 .358 -.316 .491 -.517l5 -7.509c.236 -.353 .362 -.774 .362 -1.206v-.388" /></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></symbol><symbol id="i-help-circle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 16v.01" /> <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></symbol><symbol id="i-info-circle" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /> <path d="M12 9h.01" /> <path d="M11 12h1v4h1" /></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 21c.5 -4.5 2.5 -8 7 -10" /> <path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /> <path d="M3 7l9 6l9 -6" /></symbol><symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></symbol><symbol id="i-meat" viewBox="0 0 24 24"><path d="M13.62 8.382l1.966 -1.967a2 2 0 1 1 3.414 -1.415a2 2 0 1 1 -1.413 3.414l-1.82 1.821" /> <path d="M5.904 18.596c2.733 2.734 5.9 4 7.07 2.829c1.172 -1.172 -.094 -4.338 -2.828 -7.071c-2.733 -2.734 -5.9 -4 -7.07 -2.829c-1.172 1.172 .094 4.338 2.828 7.071z" /> <path d="M7.5 16l1 1" /> <path d="M12.975 21.425c3.905 -3.906 4.855 -9.288 2.121 -12.021c-2.733 -2.734 -8.115 -1.784 -12.02 2.121" /></symbol><symbol id="i-parking" viewBox="0 0 24 24"><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" /> <path d="M10 16v-8h2.667c.736 0 1.333 .895 1.333 2s-.597 2 -1.333 2h-2.667" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></symbol><symbol id="i-salad" viewBox="0 0 24 24"><path d="M4 11h16a1 1 0 0 1 1 1v.5c0 1.5 -2.517 5.573 -4 6.5v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1c-1.687 -1.054 -4 -5 -4 -6.5v-.5a1 1 0 0 1 1 -1z" /> <path d="M18.5 11c.351 -1.017 .426 -2.236 .5 -3.714v-1.286h-2.256c-2.83 0 -4.616 .804 -5.64 2.076" /> <path d="M5.255 11.008a12.204 12.204 0 0 1 -.255 -2.008v-1h1.755c.98 0 1.801 .124 2.479 .35" /> <path d="M8 8l1 -4l4 2.5" /> <path d="M13 11v-.5a2.5 2.5 0 1 0 -5 0v.5" /></symbol><symbol id="i-share" viewBox="0 0 24 24"><path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M8.7 10.7l6.6 -3.4" /> <path d="M8.7 13.3l6.6 3.4" /></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></symbol><symbol id="i-tools-kitchen-2" viewBox="0 0 24 24"><path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" /></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /> <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" /> <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></symbol><symbol id="i-users-group" viewBox="0 0 24 24"><path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" /> <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M17 10h2a2 2 0 0 1 2 2v1" /> <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /> <path d="M3 13v-1a2 2 0 0 1 2 -2h2" /></symbol><symbol id="i-wheelchair" viewBox="0 0 24 24"><path d="M8 16m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" /> <path d="M19 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /> <path d="M19 17a3 3 0 0 0 -3 -3h-3.4" /> <path d="M3 3h1a2 2 0 0 1 2 2v6" /> <path d="M6 8h11" /> <path d="M15 8v6" /></symbol><symbol id="i-wifi" viewBox="0 0 24 24"><path d="M12 18l.01 0" /> <path d="M9.172 15.172a4 4 0 0 1 5.656 0" /> <path d="M6.343 12.343a8 8 0 0 1 11.314 0" /> <path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" /></symbol></svg>
 
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="tb-l">
-    <a href="https://g.page/crewittscreek?share" target="_blank"><i class="ti ti-map-pin"></i> 2037 Centennial Blvd, Independence, KY</a>
-    <a href="tel:+18593595121"><i class="ti ti-phone"></i> (859) 359-5121</a>
+    <a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener"><svg class="ti" aria-hidden="true"><use href="#i-map-pin"/></svg> 2037 Centennial Blvd, Independence, KY</a>
+    <a href="tel:+18593595121"><svg class="ti" aria-hidden="true"><use href="#i-phone"/></svg> (859) 359-5121</a>
   </div>
   <div class="tb-r">
-    <a href="https://www.facebook.com/crewittscreek/" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-    <a href="https://www.instagram.com/crewittscreek/" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+    <a href="https://www.facebook.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ti" aria-hidden="true"><use href="#i-brand-facebook"/></svg></a>
+    <a href="https://www.instagram.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ti" aria-hidden="true"><use href="#i-brand-instagram"/></svg></a>
   </div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-brand" onclick="showPage('home')"><i class="ti ti-droplet"></i> Crewitts <span>Creek</span></div>
+  <a class="nav-brand" href="#home" style="text-decoration:none"><svg class="ti" aria-hidden="true"><use href="#i-droplet"/></svg> Crewitts <span>Creek</span></a>
   <div class="nav-links">
-    <a class="active" id="nav-home" onclick="showPage('home')">Home</a>
-    <a id="nav-menu" onclick="showPage('menu')">Menu</a>
-    <a id="nav-drinks" onclick="showPage('drinks')">Drinks</a>
-    <a id="nav-reviews" onclick="goReviews()">Reviews</a>
-    <a id="nav-contact" onclick="showPage('contact')">Contact</a>
+    <a class="active" id="nav-home" href="#home">Home</a>
+    <a id="nav-menu" href="#menu">Menu</a>
+    <a id="nav-drinks" href="#drinks">Drinks</a>
+    <a id="nav-reviews" href="#reviews">Reviews</a>
+    <a id="nav-contact" href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -300,7 +318,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 <div class="page active" id="page-home">
 
   <div class="hero">
-    <div class="hero-bg"></div>
+    <img class="hero-bg" src="images/hero-800.webp" srcset="images/hero-480.webp 480w, images/hero-800.webp 800w, images/hero-1000.webp 1000w" sizes="(max-width:600px) 60vw, 100vw" width="1000" height="562" alt="" fetchpriority="high" decoding="async">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="eyebrow">Independence, Kentucky · Est. 1837</div>
@@ -308,22 +326,22 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <h1>Welcome to<br><em>The Creek</em></h1>
       <p>Scratch-made comfort food, famous mac &amp; cheese, cold beer on tap, and a patio worth lingering on — right here in Northern KY.</p>
       <div class="btns">
-        <button class="btn btn-p" onclick="showPage('menu')"><i class="ti ti-tools-kitchen-2"></i> View Our Menu</button>
-        <button class="btn btn-o" onclick="showPage('drinks')"><i class="ti ti-beer"></i> View Our Drinks</button>
-        <a class="btn btn-o" href="tel:+18593595121"><i class="ti ti-phone"></i> Call Us</a>
+        <a class="btn btn-p" href="#menu" style="text-decoration:none"><svg class="ti" aria-hidden="true"><use href="#i-tools-kitchen-2"/></svg> View Our Menu</a>
+        <a class="btn btn-o" href="#drinks" style="text-decoration:none"><svg class="ti" aria-hidden="true"><use href="#i-beer"/></svg> View Our Drinks</a>
+        <a class="btn btn-o" href="tel:+18593595121"><svg class="ti" aria-hidden="true"><use href="#i-phone"/></svg> Call Us</a>
       </div>
     </div>
   </div>
 
   <!-- REAL PHOTO STRIP -->
   <div class="photo-strip">
-    <div class="strip-img">
-      <img src="images/exterior.png" alt="Crewitts Creek Kitchen & Bar exterior">
+    <div class="strip-img ext">
+      <img src="images/exterior-1000.webp" srcset="images/exterior-760.webp 760w, images/exterior-1000.webp 1000w" sizes="(max-width:520px) 100vw, 50vw" width="1000" height="562" loading="lazy" decoding="async" alt="Crewitts Creek Kitchen & Bar exterior">
       <div class="strip-overlay"></div>
       <span class="strip-label">Our Place</span>
     </div>
     <div class="strip-img">
-      <img src="images/food.png" alt="Burger and fries at Crewitts Creek">
+      <img src="images/food-709.webp" srcset="images/food-420.webp 420w, images/food-709.webp 709w" sizes="(max-width:520px) 100vw, 50vw" width="709" height="399" loading="lazy" decoding="async" alt="Burger and fries at Crewitts Creek">
       <div class="strip-overlay"></div>
       <span class="strip-label">Our Food</span>
     </div>
@@ -333,7 +351,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
     <div class="about-inner">
       <div class="about-text">
         <div class="sec-label">About The Creek</div>
-        <div class="sec-title">Your Neighborhood Kitchen & Bar</div>
+        <h2 class="sec-title">Your Neighborhood Kitchen & Bar</h2>
         <p>Crewitts Creek Kitchen & Bar is Independence, Kentucky's go-to spot for real comfort food done right. With a full sports bar and a crew that treats you like family — come hungry, come thirsty.</p>
         <p>Opened in June 2017 by two Independence neighbors, we've grown into one of Northern Kentucky's most-reviewed local restaurants. Known for our signature Mac N Cheese, hand-pattied 8oz Angus burgers, Yard Bird fried chicken, and 20+ craft beers on tap. Your home for UK Basketball.</p>
       </div>
@@ -349,26 +367,26 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="features">
     <div class="con">
       <div class="sec-label">What We Offer</div>
-      <div class="sec-title">Come Hungry. Come Thirsty.</div>
+      <h2 class="sec-title">Come Hungry. Come Thirsty.</h2>
       <div class="sec-sub">Something for everyone — from our famous Mac N Cheese to ice-cold drafts and trivia nights.</div>
       <div class="cards">
         <div class="card">
-          <div class="c-icon"><i class="ti ti-tools-kitchen-2"></i></div>
+          <div class="c-icon"><svg class="ti" aria-hidden="true"><use href="#i-tools-kitchen-2"/></svg></div>
           <h3>Our Menu</h3>
           <p>Burgers, sandwiches, Mac N Cheese, Yard Bird fried chicken, salads, and Kentucky comfort classics — all handcrafted from scratch.</p>
-          <button class="btn-c" onclick="showPage('menu')">View Our Menu</button>
+          <a class="btn-c" href="#menu" style="text-decoration:none">View Our Menu</a>
         </div>
         <div class="card">
-          <div class="c-icon"><i class="ti ti-beer"></i></div>
+          <div class="c-icon"><svg class="ti" aria-hidden="true"><use href="#i-beer"/></svg></div>
           <h3>Drinks</h3>
           <p>20+ craft beers on tap, signature cocktails, wine, and more. The best spot in NKY to watch UK Basketball or your favorite team.</p>
-          <button class="btn-c" onclick="showPage('drinks')">View Our Drinks</button>
+          <a class="btn-c" href="#drinks" style="text-decoration:none">View Our Drinks</a>
         </div>
         <div class="card">
-          <div class="c-icon"><i class="ti ti-users"></i></div>
+          <div class="c-icon"><svg class="ti" aria-hidden="true"><use href="#i-users"/></svg></div>
           <h3>Join Our Team</h3>
           <p>We're always looking for great people to join the crew. Apply online and we'll be in touch soon.</p>
-          <button class="btn-c" onclick="showPage('application')">Apply Here</button>
+          <a class="btn-c" href="#application" style="text-decoration:none">Apply Here</a>
         </div>
       </div>
     </div>
@@ -378,7 +396,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="reviews" id="reviews">
     <div class="con">
       <div class="sec-label">Loved by Locals</div>
-      <div class="sec-title">1,400+ Neighbors Can't Be Wrong</div>
+      <h2 class="sec-title">1,400+ Neighbors Can't Be Wrong</h2>
       <div class="rev-head">
         <div class="rev-score"><div class="big">4.5</div><div class="stars">★★★★★</div><div class="cnt">1,448 Google reviews</div></div>
         <div>
@@ -404,7 +422,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="rev"><p>Came back twice in three weeks. Loved the mac &amp; cheese and strawberry salad, plus a huge menu and great service.</p><div class="who">Jeff M. <span>· Google Local Guide</span></div></div>
       </div>
       <div class="rev-foot">
-        <a class="btn btn-p" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener"><i class="ti ti-brand-google"></i> Read All Reviews on Google</a>
+        <a class="btn btn-p" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener"><svg class="ti" aria-hidden="true"><use href="#i-brand-google"/></svg> Read All Reviews on Google</a>
         <a class="btn btn-c" style="padding:13px 22px;font-size:15px;border-radius:8px;text-decoration:none" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener">Leave a Review</a>
         <small>Reviews paraphrased from Google. Rating and counts as of Oct 15, 2026.</small>
       </div>
@@ -414,20 +432,20 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="amen">
     <div class="con">
       <div class="sec-label">Good to Know</div>
-      <div class="sec-title" style="margin-bottom:0">Everything You Need for a Great Night Out</div>
+      <h2 class="sec-title" style="margin-bottom:0">Everything You Need for a Great Night Out</h2>
       <div class="amen-grid">
-        <div class="amen-item"><i class="ti ti-armchair"></i>Patio &amp; outdoor seating</div>
-        <div class="amen-item"><i class="ti ti-calendar-check"></i>Accepts reservations</div>
-        <div class="amen-item"><i class="ti ti-baby-carriage"></i>Kids' menu &amp; high chairs</div>
-        <div class="amen-item"><i class="ti ti-users-group"></i>Great for groups</div>
-        <div class="amen-item"><i class="ti ti-glass-cocktail"></i>Happy hour drinks</div>
-        <div class="amen-item"><i class="ti ti-beer"></i>Full bar &amp; craft beer</div>
-        <div class="amen-item"><i class="ti ti-help-circle"></i>Trivia night</div>
-        <div class="amen-item"><i class="ti ti-egg-fried"></i>Brunch &amp; lunch</div>
-        <div class="amen-item"><i class="ti ti-leaf"></i>Vegetarian options</div>
-        <div class="amen-item"><i class="ti ti-wheelchair"></i>Wheelchair accessible</div>
-        <div class="amen-item"><i class="ti ti-parking"></i>Free parking lot</div>
-        <div class="amen-item"><i class="ti ti-wifi"></i>Free Wi-Fi</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-armchair"/></svg>Patio &amp; outdoor seating</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-calendar-check"/></svg>Accepts reservations</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-baby-carriage"/></svg>Kids' menu &amp; high chairs</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-users-group"/></svg>Great for groups</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-glass-cocktail"/></svg>Happy hour drinks</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-beer"/></svg>Full bar &amp; craft beer</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-help-circle"/></svg>Trivia night</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-egg-fried"/></svg>Brunch &amp; lunch</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-leaf"/></svg>Vegetarian options</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-wheelchair"/></svg>Wheelchair accessible</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-parking"/></svg>Free parking lot</div>
+        <div class="amen-item"><svg class="ti" aria-hidden="true"><use href="#i-wifi"/></svg>Free Wi-Fi</div>
       </div>
     </div>
   </div>
@@ -435,7 +453,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="hrs">
     <div class="hrs-grid">
       <div class="hrs-block">
-        <h3><i class="ti ti-clock"></i> Hours</h3>
+        <h3><svg class="ti" aria-hidden="true"><use href="#i-clock"/></svg> Hours</h3>
         <table class="ht">
           <tr><td>Sunday</td><td>11am – 8pm</td></tr>
           <tr class="cls"><td>Monday</td><td>Closed</td></tr>
@@ -447,15 +465,15 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         </table>
       </div>
       <div class="hrs-block">
-        <h3><i class="ti ti-phone"></i> Call Us</h3>
+        <h3><svg class="ti" aria-hidden="true"><use href="#i-phone"/></svg> Call Us</h3>
         <a href="tel:+18593595121" class="call-link">(859) 359-5121</a>
         <p class="call-sub">Questions, to-go orders, or to see what's on special tonight — give us a ring.</p>
-        <p class="call-sub" style="margin-top:10px"><i class="ti ti-mail"></i> <a href="mailto:crewittscreek@gmail.com" style="color:#4a6a8a;text-decoration:none">crewittscreek@gmail.com</a></p>
+        <p class="call-sub" style="margin-top:10px"><svg class="ti" aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:crewittscreek@gmail.com" style="color:#9ab4cc;text-decoration:none">crewittscreek@gmail.com</a></p>
       </div>
       <div class="hrs-block">
-        <h3><i class="ti ti-map-pin"></i> Location</h3>
+        <h3><svg class="ti" aria-hidden="true"><use href="#i-map-pin"/></svg> Location</h3>
         <p style="color:#90b0cc;font-size:14px;line-height:1.8;margin-bottom:18px">2037 Centennial Blvd<br>Independence, KY 41051</p>
-        <a href="https://g.page/crewittscreek?share" target="_blank" class="btn btn-p btn-sm">Get Directions</a>
+        <a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener" class="btn btn-p btn-sm">Get Directions</a>
       </div>
     </div>
   </div>
@@ -463,30 +481,38 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="loc-sec">
     <div class="con">
       <div class="sec-label">Find Us</div>
-      <div class="sec-title" style="margin-bottom:26px">We're Easy to Find</div>
+      <h2 class="sec-title" style="margin-bottom:26px">We're Easy to Find</h2>
       <div class="loc-card">
-        <div class="loc-map">
-          <iframe title="Map to Crewitts Creek Kitchen &amp; Bar" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=2037+Centennial+Blvd,+Independence,+KY+41051&amp;z=15&amp;output=embed"></iframe>
+        <div class="loc-map" id="map-box">
+          <div class="map-facade">
+            <svg class="ti" aria-hidden="true"><use href="#i-map-pin"/></svg>
+            <h3>Crewitts Creek Kitchen &amp; Bar</h3>
+            <p>2037 Centennial Blvd<br>Independence, KY 41051</p>
+            <div class="btns">
+              <button class="btn btn-p btn-sm" type="button" onclick="loadMap()">Show Map</button>
+              <a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener" class="btn btn-o btn-sm">Open in Google Maps</a>
+            </div>
+          </div>
         </div>
         <div class="loc-info">
           <div class="loc-row">
-            <i class="ti ti-map-pin"></i>
-            <div class="loc-row-text"><strong>Address</strong><a href="https://g.page/crewittscreek?share" target="_blank">2037 Centennial Blvd, Independence, KY 41051</a></div>
+            <svg class="ti" aria-hidden="true"><use href="#i-map-pin"/></svg>
+            <div class="loc-row-text"><strong>Address</strong><a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener">2037 Centennial Blvd, Independence, KY 41051</a></div>
           </div>
           <div class="loc-row">
-            <i class="ti ti-phone"></i>
+            <svg class="ti" aria-hidden="true"><use href="#i-phone"/></svg>
             <div class="loc-row-text"><strong>Phone</strong><a href="tel:+18593595121">(859) 359-5121</a></div>
           </div>
           <div class="loc-row">
-            <i class="ti ti-clock"></i>
+            <svg class="ti" aria-hidden="true"><use href="#i-clock"/></svg>
             <div class="loc-row-text"><strong>Today's Hours</strong><span id="todays-hours">Loading...</span></div>
           </div>
           <div class="loc-row">
-            <i class="ti ti-car"></i>
+            <svg class="ti" aria-hidden="true"><use href="#i-car"/></svg>
             <div class="loc-row-text"><strong>Parking & Options</strong><span>Free parking lot · Dine-in · Takeout · Patio seating · Reservations accepted</span></div>
           </div>
           <div class="loc-row">
-            <i class="ti ti-device-tv"></i>
+            <svg class="ti" aria-hidden="true"><use href="#i-device-tv"/></svg>
             <div class="loc-row-text"><strong>Sports Bar</strong><span>Multiple TVs · UK Basketball · Trivia nights · Happy hour</span></div>
           </div>
         </div>
@@ -499,8 +525,8 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <h2>Cold drafts. Good food. Great people.</h2>
       <p>Your go-to spot for UK Basketball, trivia nights, and real comfort food in Northern Kentucky.</p>
       <div class="soc-row">
-        <a href="https://www.facebook.com/crewittscreek/" target="_blank" class="soc-btn btn-fb"><i class="ti ti-brand-facebook"></i> Facebook</a>
-        <a href="https://www.instagram.com/crewittscreek/" target="_blank" class="soc-btn btn-ig"><i class="ti ti-brand-instagram"></i> Instagram</a>
+        <a href="https://www.facebook.com/crewittscreek/" target="_blank" rel="noopener" class="soc-btn btn-fb"><svg class="ti" aria-hidden="true"><use href="#i-brand-facebook"/></svg> Facebook</a>
+        <a href="https://www.instagram.com/crewittscreek/" target="_blank" rel="noopener" class="soc-btn btn-ig"><svg class="ti" aria-hidden="true"><use href="#i-brand-instagram"/></svg> Instagram</a>
       </div>
     </div>
   </div>
@@ -511,130 +537,130 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 <div class="page" id="page-menu">
   <div class="ph"><h1>Our Menu</h1><p>Handcrafted from scratch daily. Famous for burgers, Mac N Cheese, and Yard Bird fried chicken.</p></div>
   <div class="menu-sec"><div class="con">
-    <div class="m-note"><i class="ti ti-info-circle" style="color:var(--blue);margin-right:5px"></i>Menu and prices may vary. Call <a href="tel:+18593595121">(859) 359-5121</a> or check our <a href="https://www.facebook.com/crewittscreek/" target="_blank">Facebook</a> for daily specials.</div>
+    <div class="m-note"><svg class="ti" style="color:var(--blue);margin-right:5px" aria-hidden="true"><use href="#i-info-circle"/></svg>Menu and prices may vary. Call <a href="tel:+18593595121">(859) 359-5121</a> or check our <a href="https://www.facebook.com/crewittscreek/" target="_blank" rel="noopener">Facebook</a> for daily specials.</div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-flame"></i><h2>Appetizers</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-flame"/></svg><h2>Appetizers</h2><div class="cat-line"></div></div>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Seasonal Fried Green Tomatoes</h4><span class="price">$9</span></div><p>Onion-bacon jam, scallions, house-made remoulade.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Crab Cakes</h4><span class="price">$13</span></div><p>Fresh lump crab cakes with house-made remoulade.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Deep Fried Mushrooms</h4><span class="price">$9</span></div><p>Piled high! Hand-battered fresh mushrooms with horseradish sour cream.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Spinach & Artichoke Dip</h4><span class="price">$10</span></div><p>Parmesan, mozzarella, grilled onions, diced tomato, pita chips.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Spicy Battered Pickle Fries</h4><span class="price">$9</span></div><p>French fry-style sliced pickles with sriracha ranch.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Onion Ring Tower</h4><span class="price">$9</span></div><p>Sweet onions hand-cut, hand-battered, golden fried with remoulade and cocktail sauce.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Homemade Fried Cheese</h4><span class="price">$10</span></div><p>Choice of marinara or cocktail sauce.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Sweet/Spicy Fried Peppers</h4><span class="price">$9</span></div><p>Peppedew and banana peppers hand-battered and deep fried. Sriracha ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Seasonal Fried Green Tomatoes</h3><span class="price">$9</span></div><p>Onion-bacon jam, scallions, house-made remoulade.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Crab Cakes</h3><span class="price">$13</span></div><p>Fresh lump crab cakes with house-made remoulade.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Deep Fried Mushrooms</h3><span class="price">$9</span></div><p>Piled high! Hand-battered fresh mushrooms with horseradish sour cream.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Spinach & Artichoke Dip</h3><span class="price">$10</span></div><p>Parmesan, mozzarella, grilled onions, diced tomato, pita chips.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Spicy Battered Pickle Fries</h3><span class="price">$9</span></div><p>French fry-style sliced pickles with sriracha ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Onion Ring Tower</h3><span class="price">$9</span></div><p>Sweet onions hand-cut, hand-battered, golden fried with remoulade and cocktail sauce.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Homemade Fried Cheese</h3><span class="price">$10</span></div><p>Choice of marinara or cocktail sauce.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Sweet/Spicy Fried Peppers</h3><span class="price">$9</span></div><p>Peppedew and banana peppers hand-battered and deep fried. Sriracha ranch.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-share"></i><h2>Shareables</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-share"/></svg><h2>Shareables</h2><div class="cat-line"></div></div>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Napolean Dynamite</h4><span class="price">$10</span></div><p>Grilled chicken quesadilla, black beans, corn, jalapeños, cheddar jack. Salsa and sour cream.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Build Your Own Bruschetta</h4><span class="price">$10</span></div><p>Fresh mozzarella, diced tomatoes, basil, olive oil, sweet balsamic. Grilled crostinis.</p></div>
-        <div class="mi"><div class="mi-top"><h4>G.O.A.T. Balls</h4><span class="price">$12</span></div><p>House-made meatballs and marinara topped with goat cheese. Grilled crostinis.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Poutine</h4><span class="price">$12</span></div><p>Fried spuds, Wisconsin cheese curds, braised short rib and gravy.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Napolean Dynamite</h3><span class="price">$10</span></div><p>Grilled chicken quesadilla, black beans, corn, jalapeños, cheddar jack. Salsa and sour cream.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Build Your Own Bruschetta</h3><span class="price">$10</span></div><p>Fresh mozzarella, diced tomatoes, basil, olive oil, sweet balsamic. Grilled crostinis.</p></div>
+        <div class="mi"><div class="mi-top"><h3>G.O.A.T. Balls</h3><span class="price">$12</span></div><p>House-made meatballs and marinara topped with goat cheese. Grilled crostinis.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Poutine</h3><span class="price">$12</span></div><p>Fried spuds, Wisconsin cheese curds, braised short rib and gravy.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-salad"></i><h2>Salads</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-salad"/></svg><h2>Salads</h2><div class="cat-line"></div></div>
       <p class="cat-note">Dressings: ranch, southwest ranch, strawberry balsamic, caesar, bleu cheese, honey mustard, italian, basil vinaigrette, thousand island</p>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Strawberry Chicken Spinach</h4><span class="price">$12</span></div><p>Chopped spinach, grilled buttermilk chicken, bacon, strawberries, goat cheese, candied nuts, strawberry balsamic.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Emma Lu Lu</h4><span class="price">$11</span></div><p>Romaine, Caesar dressing, grilled buttermilk chicken, bacon, garlic croutons, Parmesan, hard boiled egg.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Crispy Chicken BLT Salad</h4><span class="price">$11</span></div><p>Hand-breaded chicken, mixed greens, tomatoes, pickled onions, bacon, buttermilk ranch.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Southwest Chicken Salad</h4><span class="price">$11</span></div><p>Romaine, corn, black beans, salsa, tomatoes, cheddar jack, grilled chicken, tortilla strips, southwest ranch.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Chef Salad</h4><span class="price">$11</span></div><p>Mixed greens, tomatoes, smoked ham, mesquite turkey, bacon, cheddar jack, hard-boiled egg, buttermilk ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Strawberry Chicken Spinach</h3><span class="price">$12</span></div><p>Chopped spinach, grilled buttermilk chicken, bacon, strawberries, goat cheese, candied nuts, strawberry balsamic.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Emma Lu Lu</h3><span class="price">$11</span></div><p>Romaine, Caesar dressing, grilled buttermilk chicken, bacon, garlic croutons, Parmesan, hard boiled egg.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Crispy Chicken BLT Salad</h3><span class="price">$11</span></div><p>Hand-breaded chicken, mixed greens, tomatoes, pickled onions, bacon, buttermilk ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Southwest Chicken Salad</h3><span class="price">$11</span></div><p>Romaine, corn, black beans, salsa, tomatoes, cheddar jack, grilled chicken, tortilla strips, southwest ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Chef Salad</h3><span class="price">$11</span></div><p>Mixed greens, tomatoes, smoked ham, mesquite turkey, bacon, cheddar jack, hard-boiled egg, buttermilk ranch.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-cheese"></i><h2>Signature Mac & Cheese</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-cheese"/></svg><h2>Signature Mac & Cheese</h2><div class="cat-line"></div></div>
       <p class="cat-note">Made fresh from scratch to order — our most popular dishes</p>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>5 Cheese</h4><span class="price">$9</span></div><p>Cheddar, Monterey jack, Vermont white cheddar, mozzarella, Parmesan, bread crumbs.</p></div>
-        <div class="mi"><div class="mi-top"><h4>The Saint</h4><span class="price">$12</span></div><p>Cajun shrimp, cheddar jack, tomatoes, scallions.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Shuffle Off to Buffalo</h4><span class="price">$12</span></div><p>Grilled or fried Buffalo chicken, crumbled bleu cheese, shredded mozzarella.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Marisa Tomei</h4><span class="price">$10</span></div><p>Mozzarella, chicken, pesto and tomatoes.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Leonardo da Pinchi</h4><span class="price">$13</span></div><p>Tender lump crab, Vermont white cheddar, cheddar jack, fresh tomatoes and scallions.</p></div>
-        <div class="mi"><div class="mi-top"><h4>The Kramer</h4><span class="price">$13</span></div><p>Samuel Adams beer cheese mac, pretzel crusted chicken, dijon aioli, pretzel crumbs, scallions.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Italian Stallion</h4><span class="price">$10</span></div><p>Fresh mozzarella, house-made meatballs and marinara. Grilled crostini.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Chris P. Bacon</h4><span class="price">$10</span></div><p>Slow-roasted pork, five-cheese blend, applewood smoked bacon, spicy BBQ sauce, scallions.</p></div>
+        <div class="mi"><div class="mi-top"><h3>5 Cheese</h3><span class="price">$9</span></div><p>Cheddar, Monterey jack, Vermont white cheddar, mozzarella, Parmesan, bread crumbs.</p></div>
+        <div class="mi"><div class="mi-top"><h3>The Saint</h3><span class="price">$12</span></div><p>Cajun shrimp, cheddar jack, tomatoes, scallions.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Shuffle Off to Buffalo</h3><span class="price">$12</span></div><p>Grilled or fried Buffalo chicken, crumbled bleu cheese, shredded mozzarella.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Marisa Tomei</h3><span class="price">$10</span></div><p>Mozzarella, chicken, pesto and tomatoes.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Leonardo da Pinchi</h3><span class="price">$13</span></div><p>Tender lump crab, Vermont white cheddar, cheddar jack, fresh tomatoes and scallions.</p></div>
+        <div class="mi"><div class="mi-top"><h3>The Kramer</h3><span class="price">$13</span></div><p>Samuel Adams beer cheese mac, pretzel crusted chicken, dijon aioli, pretzel crumbs, scallions.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Italian Stallion</h3><span class="price">$10</span></div><p>Fresh mozzarella, house-made meatballs and marinara. Grilled crostini.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Chris P. Bacon</h3><span class="price">$10</span></div><p>Slow-roasted pork, five-cheese blend, applewood smoked bacon, spicy BBQ sauce, scallions.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-bread"></i><h2>Sandwiches</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-bread"/></svg><h2>Sandwiches</h2><div class="cat-line"></div></div>
       <p class="cat-note">All served with choice of fried spuds, cole slaw, or fresh fruit salad</p>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Crew's BLT</h4><span class="price">$11</span></div><p>Half pound applewood smoked bacon, lettuce, tomato, chipotle aioli on grilled Vienna bread.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Cuba Gooding Jr.</h4><span class="price">$12</span></div><p>Smoked ham, mesquite turkey, pulled pork, bacon, Swiss, dijon, garlic pickles on panini-pressed ciabatta.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Mr. Seinfeld</h4><span class="price">$13</span></div><p>Corned beef brisket, swiss, 1000 island, sauerkraut on marble rye. Served with pickle fries.</p></div>
-        <div class="mi"><div class="mi-top"><h4>The Doghouse</h4><span class="price">$13</span></div><p>Short rib grilled cheese, smoked gouda, horsey sour cream, pickled red onion on grilled sourdough.</p></div>
-        <div class="mi"><div class="mi-top"><h4>KPOE Boy</h4><span class="price">$12</span></div><p>Grilled cajun or deep fried shrimp, shredded lettuce, tomato, house slaw, remoulade.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Brotherly Love</h4><span class="price">$12</span></div><p>Philly cheesesteak, jalapeño cheese sauce, grilled onions, mayo on oven baked French bread.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Run Chicken Run</h4><span class="price">$11</span></div><p>Grilled or fried buttermilk chicken, bacon, chipotle aioli, lettuce, tomato on grilled Vienna bread.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Big Lebowski</h4><span class="price">$16</span></div><p>Fresh Angus grilled ribeye, swiss, white truffle aioli, smoked gouda, crispy onion straws on ciabatta.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Down South</h4><span class="price">$11</span></div><p>Fried buttermilk chicken, house slaw, chipotle aioli, garlic pickles on grilled Vienna bread.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Bill Murray</h4><span class="price">$11</span></div><p>House-made meatballs, marinara, mozzarella and parmesan on French bread with Parmesan peppercorn ranch.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Join The Club</h4><span class="price">$13</span></div><p>Double decker oven-roasted turkey, smoked ham, cheddar, Swiss, lettuce, tomato, applewood bacon.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Grilled 3 Cheese Double Stack</h4><span class="price">$12</span></div><p>Cheddar, Swiss and gruyere, applewood smoked bacon, fresh tomato and red onion on grilled Texas toast.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Crew's BLT</h3><span class="price">$11</span></div><p>Half pound applewood smoked bacon, lettuce, tomato, chipotle aioli on grilled Vienna bread.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Cuba Gooding Jr.</h3><span class="price">$12</span></div><p>Smoked ham, mesquite turkey, pulled pork, bacon, Swiss, dijon, garlic pickles on panini-pressed ciabatta.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Mr. Seinfeld</h3><span class="price">$13</span></div><p>Corned beef brisket, swiss, 1000 island, sauerkraut on marble rye. Served with pickle fries.</p></div>
+        <div class="mi"><div class="mi-top"><h3>The Doghouse</h3><span class="price">$13</span></div><p>Short rib grilled cheese, smoked gouda, horsey sour cream, pickled red onion on grilled sourdough.</p></div>
+        <div class="mi"><div class="mi-top"><h3>KPOE Boy</h3><span class="price">$12</span></div><p>Grilled cajun or deep fried shrimp, shredded lettuce, tomato, house slaw, remoulade.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Brotherly Love</h3><span class="price">$12</span></div><p>Philly cheesesteak, jalapeño cheese sauce, grilled onions, mayo on oven baked French bread.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Run Chicken Run</h3><span class="price">$11</span></div><p>Grilled or fried buttermilk chicken, bacon, chipotle aioli, lettuce, tomato on grilled Vienna bread.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Big Lebowski</h3><span class="price">$16</span></div><p>Fresh Angus grilled ribeye, swiss, white truffle aioli, smoked gouda, crispy onion straws on ciabatta.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Down South</h3><span class="price">$11</span></div><p>Fried buttermilk chicken, house slaw, chipotle aioli, garlic pickles on grilled Vienna bread.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Bill Murray</h3><span class="price">$11</span></div><p>House-made meatballs, marinara, mozzarella and parmesan on French bread with Parmesan peppercorn ranch.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Join The Club</h3><span class="price">$13</span></div><p>Double decker oven-roasted turkey, smoked ham, cheddar, Swiss, lettuce, tomato, applewood bacon.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Grilled 3 Cheese Double Stack</h3><span class="price">$12</span></div><p>Cheddar, Swiss and gruyere, applewood smoked bacon, fresh tomato and red onion on grilled Texas toast.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-meat"></i><h2>Signature Burgers</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-meat"/></svg><h2>Signature Burgers</h2><div class="cat-line"></div></div>
       <p class="cat-note">Fresh hand-pattied 8oz Angus beef — served with fried spuds, cole slaw, or fresh fruit</p>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Crew's House Burger</h4><span class="price">$11</span></div><p>Cheddar, bacon, lettuce, tomato, onion, garlic pickles, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>California Dreamin'</h4><span class="price">$12</span></div><p>Bacon, avocado, swiss, chipotle aioli, tomato, lettuce, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Cowboy Up</h4><span class="price">$12</span></div><p>Bacon, cheddar, spicy BBQ, onion straws, lettuce, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Jerry Garcia</h4><span class="price">$13</span></div><p>Sliced mushrooms, swiss, KY bourbon ale bordelaise, crispy onion straws, ciabatta roll.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Thelma & Blue Cheese Louise</h4><span class="price">$12</span></div><p>Bleu cheese crumbles, peach chutney, crispy onion straws, lettuce, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Rocky Balboa</h4><span class="price">$13</span></div><p>Philly cheese steak, swiss, grilled peppers and onions, dijonnaise, chipotle aioli, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Jeff Spicoli</h4><span class="price">$13</span></div><p>Angus beef patty, crab cake, remoulade, spring mix, tomato, challah bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Dominach's Sidekick</h4><span class="price">$13</span></div><p>Samuel Adams beer cheese, bacon, crispy onion straws, pretzel bun.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Molly Marinara</h4><span class="price">$13</span></div><p>Sliced pepperoni, hand-cut battered provolone, house-made marinara, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Crew's House Burger</h3><span class="price">$11</span></div><p>Cheddar, bacon, lettuce, tomato, onion, garlic pickles, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>California Dreamin'</h3><span class="price">$12</span></div><p>Bacon, avocado, swiss, chipotle aioli, tomato, lettuce, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Cowboy Up</h3><span class="price">$12</span></div><p>Bacon, cheddar, spicy BBQ, onion straws, lettuce, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Jerry Garcia</h3><span class="price">$13</span></div><p>Sliced mushrooms, swiss, KY bourbon ale bordelaise, crispy onion straws, ciabatta roll.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Thelma & Blue Cheese Louise</h3><span class="price">$12</span></div><p>Bleu cheese crumbles, peach chutney, crispy onion straws, lettuce, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Rocky Balboa</h3><span class="price">$13</span></div><p>Philly cheese steak, swiss, grilled peppers and onions, dijonnaise, chipotle aioli, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Jeff Spicoli</h3><span class="price">$13</span></div><p>Angus beef patty, crab cake, remoulade, spring mix, tomato, challah bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Dominach's Sidekick</h3><span class="price">$13</span></div><p>Samuel Adams beer cheese, bacon, crispy onion straws, pretzel bun.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Molly Marinara</h3><span class="price">$13</span></div><p>Sliced pepperoni, hand-cut battered provolone, house-made marinara, challah bun.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-drumstick"></i><h2>Yard Bird</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-feather"/></svg><h2>Yard Bird</h2><div class="cat-line"></div></div>
       <p class="cat-note">Please allow up to 20 minutes — worth every second</p>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Yard Bird Fried Chicken</h4><span class="price">$7+</span></div><p>Buttermilk marinated, twice-dredged in our secret herb & spice recipe. House-made hot honey sauce.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Cluck Norris</h4><span class="price">$8+</span></div><p>Fresh hand-cut jumbo boneless wings battered to order. When these cross the road, cars look both ways.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Yard Bird Fried Chicken</h3><span class="price">$7+</span></div><p>Buttermilk marinated, twice-dredged in our secret herb & spice recipe. House-made hot honey sauce.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Cluck Norris</h3><span class="price">$8+</span></div><p>Fresh hand-cut jumbo boneless wings battered to order. When these cross the road, cars look both ways.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-chef-hat"></i><h2>Knife & Fork Entrees</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-chef-hat"/></svg><h2>Knife & Fork Entrees</h2><div class="cat-line"></div></div>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Blackened Shrimp & Grits</h4><span class="price">$13</span></div><p>Corn, black beans, tomatoes, green peppers and green onion.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Zac Brown</h4><span class="price">$16</span></div><p>Hand-battered country fried Angus ribeye, dirty mashed redskins, white peppermill gravy, scallions.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Baby Got Rack</h4><span class="price">$15+</span></div><p>Slow cooked baby back ribs, dry rubbed with house seasonings, sweet & spicy BBQ sauce. Two sides.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Independence Hot Brown</h4><span class="price">$12</span></div><p>Smoked ham, mesquite turkey, bacon, tomatoes on sourdough, smothered in mornay sauce, Vermont white cheddar.</p></div>
-        <div class="mi"><div class="mi-top"><h4>French Pork Chop</h4><span class="price">$16</span></div><p>Pan seared 12oz fresh pork chop, pecan compound butter, caramel sweet mashed taters, side salad.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Kevin Hart</h4><span class="price">$17</span></div><p>Braised short ribs atop sweet cornbread with choice of side.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Chicken Rosé Pasta</h4><span class="price">$14</span></div><p>Farfalle in creamy alfredo, topped with marinara, chiffonade basil, grilled chicken, garlic bread.</p></div>
-        <div class="mi"><div class="mi-top"><h4>City Chicken</h4><span class="price">$13</span></div><p>Skewered, breaded and pan seared pork-loin, white peppermill gravy, mashed potatoes and one side.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Blackened Shrimp & Grits</h3><span class="price">$13</span></div><p>Corn, black beans, tomatoes, green peppers and green onion.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Zac Brown</h3><span class="price">$16</span></div><p>Hand-battered country fried Angus ribeye, dirty mashed redskins, white peppermill gravy, scallions.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Baby Got Rack</h3><span class="price">$15+</span></div><p>Slow cooked baby back ribs, dry rubbed with house seasonings, sweet & spicy BBQ sauce. Two sides.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Independence Hot Brown</h3><span class="price">$12</span></div><p>Smoked ham, mesquite turkey, bacon, tomatoes on sourdough, smothered in mornay sauce, Vermont white cheddar.</p></div>
+        <div class="mi"><div class="mi-top"><h3>French Pork Chop</h3><span class="price">$16</span></div><p>Pan seared 12oz fresh pork chop, pecan compound butter, caramel sweet mashed taters, side salad.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Kevin Hart</h3><span class="price">$17</span></div><p>Braised short ribs atop sweet cornbread with choice of side.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Chicken Rosé Pasta</h3><span class="price">$14</span></div><p>Farfalle in creamy alfredo, topped with marinara, chiffonade basil, grilled chicken, garlic bread.</p></div>
+        <div class="mi"><div class="mi-top"><h3>City Chicken</h3><span class="price">$13</span></div><p>Skewered, breaded and pan seared pork-loin, white peppermill gravy, mashed potatoes and one side.</p></div>
       </div>
     </div>
 
     <div class="m-cat">
-      <div class="m-cat-hd"><i class="ti ti-bowl"></i><h2>Sides</h2><div class="cat-line"></div></div>
+      <div class="m-cat-hd"><svg class="ti" aria-hidden="true"><use href="#i-bowl"/></svg><h2>Sides</h2><div class="cat-line"></div></div>
       <div class="m-grid">
-        <div class="mi"><div class="mi-top"><h4>Original Mac & Cheese</h4><span class="price">$5</span></div><p>Five-cheese blend.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Cast Iron Skillet Cornbread</h4><span class="price">$5</span></div><p>Served with honey butter.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Mashed Sweet Potatoes</h4><span class="price">$5</span></div><p>Homemade caramel sauce and candied nuts.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Collard Greens</h4><span class="price">$5</span></div><p>Cooked with ham and bacon.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Dirty Mashed Redskins</h4><span class="price">$4</span></div><p>Choice of KY bourbon ale demi or white peppermill gravy.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Fried Spuds</h4><span class="price">$4</span></div><p>Deep fried to perfection.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Cole Slaw</h4><span class="price">$4</span></div><p>House-made.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Hot Slaw</h4><span class="price">$4</span></div><p>House-made Kentucky favorite.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Baked Beans</h4><span class="price">$4</span></div><p>Topped with bacon.</p></div>
-        <div class="mi"><div class="mi-top"><h4>Fresh Fruit Salad</h4><span class="price">$4</span></div><p>Cantaloupe, honeydew, pineapple, oranges and red grapes.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Original Mac & Cheese</h3><span class="price">$5</span></div><p>Five-cheese blend.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Cast Iron Skillet Cornbread</h3><span class="price">$5</span></div><p>Served with honey butter.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Mashed Sweet Potatoes</h3><span class="price">$5</span></div><p>Homemade caramel sauce and candied nuts.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Collard Greens</h3><span class="price">$5</span></div><p>Cooked with ham and bacon.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Dirty Mashed Redskins</h3><span class="price">$4</span></div><p>Choice of KY bourbon ale demi or white peppermill gravy.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Fried Spuds</h3><span class="price">$4</span></div><p>Deep fried to perfection.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Cole Slaw</h3><span class="price">$4</span></div><p>House-made.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Hot Slaw</h3><span class="price">$4</span></div><p>House-made Kentucky favorite.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Baked Beans</h3><span class="price">$4</span></div><p>Topped with bacon.</p></div>
+        <div class="mi"><div class="mi-top"><h3>Fresh Fruit Salad</h3><span class="price">$4</span></div><p>Cantaloupe, honeydew, pineapple, oranges and red grapes.</p></div>
       </div>
     </div>
   </div></div>
@@ -645,7 +671,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="ph"><h1>Drinks</h1><p>20+ craft beers on tap, hand-crafted cocktails, and a full bar. Best spot in NKY.</p></div>
   <div class="dr-sec"><div class="con">
     <div class="dr-grid">
-      <div class="dr-card"><div class="dr-hd"><i class="ti ti-beer"></i><h3>Draft Beer</h3></div><div class="dr-body">
+      <div class="dr-card"><div class="dr-hd"><svg class="ti" aria-hidden="true"><use href="#i-beer"/></svg><h2>Draft Beer</h2></div><div class="dr-body">
         <p class="dr-note">20+ rotating taps — ask your bartender what's on tonight!</p>
         <div class="di"><span>Kentucky Bourbon Barrel Ale</span><span class="tag">Local Fave</span></div>
         <div class="di"><span>Samuel Adams Seasonal</span></div>
@@ -653,7 +679,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="di"><span>Light Lagers</span></div>
         <div class="di"><span>Rotating Seasonal Taps</span><span class="tag">Ask Us</span></div>
       </div></div>
-      <div class="dr-card"><div class="dr-hd"><i class="ti ti-glass-cocktail"></i><h3>Cocktails</h3></div><div class="dr-body">
+      <div class="dr-card"><div class="dr-hd"><svg class="ti" aria-hidden="true"><use href="#i-glass-cocktail"/></svg><h2>Cocktails</h2></div><div class="dr-body">
         <div class="di"><span>Creek Old Fashioned</span><span class="tag">House Specialty</span></div>
         <div class="di"><span>Kentucky Mule</span></div>
         <div class="di"><span>Bourbon Smash</span></div>
@@ -662,7 +688,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="di"><span>Long Island Iced Tea</span></div>
         <div class="di"><span>Rum & Coke / Vodka Soda</span></div>
       </div></div>
-      <div class="dr-card"><div class="dr-hd"><i class="ti ti-bottle"></i><h3>Wine</h3></div><div class="dr-body">
+      <div class="dr-card"><div class="dr-hd"><svg class="ti" aria-hidden="true"><use href="#i-bottle"/></svg><h2>Wine</h2></div><div class="dr-body">
         <div class="di"><span>Cabernet Sauvignon</span></div>
         <div class="di"><span>Chardonnay</span></div>
         <div class="di"><span>Pinot Grigio</span></div>
@@ -670,7 +696,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="di"><span>White Zinfandel</span></div>
         <div class="di"><span>Sparkling / Prosecco</span></div>
       </div></div>
-      <div class="dr-card"><div class="dr-hd"><i class="ti ti-cup"></i><h3>Non-Alcoholic</h3></div><div class="dr-body">
+      <div class="dr-card"><div class="dr-hd"><svg class="ti" aria-hidden="true"><use href="#i-cup"/></svg><h2>Non-Alcoholic</h2></div><div class="dr-body">
         <div class="di"><span>Soft Drinks (Pepsi Products)</span></div>
         <div class="di"><span>Fresh Brewed Iced Tea</span></div>
         <div class="di"><span>Lemonade</span></div>
@@ -679,7 +705,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="di"><span>Water</span></div>
       </div></div>
     </div>
-    <div class="m-note"><i class="ti ti-info-circle" style="color:var(--blue);margin-right:5px"></i>Drink menu rotates seasonally. Call <a href="tel:+18593595121">(859) 359-5121</a> to ask what's on tap. Must be 21+ for alcoholic beverages.</div>
+    <div class="m-note"><svg class="ti" style="color:var(--blue);margin-right:5px" aria-hidden="true"><use href="#i-info-circle"/></svg>Drink menu rotates seasonally. Call <a href="tel:+18593595121">(859) 359-5121</a> to ask what's on tap. Must be 21+ for alcoholic beverages.</div>
   </div></div>
 </div>
 
@@ -695,16 +721,16 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="fg"><label for="cs">Subject</label><input type="text" id="cs" placeholder="What's this about?" required></div>
         <div class="fg"><label for="cm">Message</label><textarea id="cm" placeholder="Write your message here..." required></textarea></div>
         <button class="fsub" onclick="subContact()">Send Message</button>
-        <div class="f-ok" id="c-ok"><i class="ti ti-circle-check" style="margin-right:5px"></i>Message sent! We'll get back to you soon.</div>
+        <div class="f-ok" id="c-ok"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Message sent! We'll get back to you soon.</div>
       </div>
       <div class="c-aside">
-        <div class="ab"><h4>Call Us</h4><a href="tel:+18593595121" class="aside-ph">(859) 359-5121</a></div>
+        <div class="ab"><h2>Call Us</h2><a href="tel:+18593595121" class="aside-ph">(859) 359-5121</a></div>
         <hr class="adiv">
-        <div class="ab"><h4>Email</h4><a href="mailto:crewittscreek@gmail.com" style="color:var(--blue);font-size:13px">crewittscreek@gmail.com</a></div>
+        <div class="ab"><h2>Email</h2><a href="mailto:crewittscreek@gmail.com" style="color:var(--blue);font-size:13px">crewittscreek@gmail.com</a></div>
         <hr class="adiv">
-        <div class="ab"><h4>Address</h4><a href="https://g.page/crewittscreek?share" target="_blank">2037 Centennial Blvd<br>Independence, KY 41051</a></div>
+        <div class="ab"><h2>Address</h2><a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener">2037 Centennial Blvd<br>Independence, KY 41051</a></div>
         <hr class="adiv">
-        <div class="ab"><h4>Hours</h4>
+        <div class="ab"><h2>Hours</h2>
           <table class="aht">
             <tr><td>Sunday</td><td>11am – 8pm</td></tr>
             <tr class="cls"><td>Monday</td><td>Closed</td></tr>
@@ -716,10 +742,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
           </table>
         </div>
         <hr class="adiv">
-        <div class="ab"><h4>Follow Us</h4>
+        <div class="ab"><h2>Follow Us</h2>
           <div class="soc-sm">
-            <a href="https://www.facebook.com/crewittscreek/" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-            <a href="https://www.instagram.com/crewittscreek/" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+            <a href="https://www.facebook.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ti" aria-hidden="true"><use href="#i-brand-facebook"/></svg></a>
+            <a href="https://www.instagram.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ti" aria-hidden="true"><use href="#i-brand-instagram"/></svg></a>
           </div>
         </div>
       </div>
@@ -732,10 +758,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="ph"><h1>Join Our Team</h1><p>We're always looking for great people. Fill out the form and we'll be in touch.</p></div>
   <div class="app-wrap">
     <div class="perks">
-      <div class="perk"><i class="ti ti-heart"></i>Family-owned & operated</div>
-      <div class="perk"><i class="ti ti-users"></i>Great team atmosphere</div>
-      <div class="perk"><i class="ti ti-clock"></i>Flexible scheduling</div>
-      <div class="perk"><i class="ti ti-star"></i>Local community favorite</div>
+      <div class="perk"><svg class="ti" aria-hidden="true"><use href="#i-heart"/></svg>Family-owned & operated</div>
+      <div class="perk"><svg class="ti" aria-hidden="true"><use href="#i-users"/></svg>Great team atmosphere</div>
+      <div class="perk"><svg class="ti" aria-hidden="true"><use href="#i-clock"/></svg>Flexible scheduling</div>
+      <div class="perk"><svg class="ti" aria-hidden="true"><use href="#i-star"/></svg>Local community favorite</div>
     </div>
     <div class="fw" style="max-width:100%">
       <div class="fg"><label for="an">Full Name</label><input type="text" id="an" placeholder="Your full name" required></div>
@@ -753,7 +779,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         </select>
       </div>
       <button class="fsub" onclick="subApp()">Submit Application</button>
-      <div class="f-ok" id="a-ok"><i class="ti ti-circle-check" style="margin-right:5px"></i>Application submitted! We'll review it and reach out soon.</div>
+      <div class="f-ok" id="a-ok"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Application submitted! We'll review it and reach out soon.</div>
     </div>
   </div>
 </div>
@@ -765,18 +791,18 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <div class="fb-brand">Crewitts <span>Creek</span></div>
       <p>Come hungry, come thirsty, and let our crew take care of you. American kitchen & bar in Independence, KY.</p>
       <div class="fsoc">
-        <a href="https://www.facebook.com/crewittscreek/" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-        <a href="https://www.instagram.com/crewittscreek/" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+        <a href="https://www.facebook.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ti" aria-hidden="true"><use href="#i-brand-facebook"/></svg></a>
+        <a href="https://www.instagram.com/crewittscreek/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ti" aria-hidden="true"><use href="#i-brand-instagram"/></svg></a>
       </div>
     </div>
     <div class="fc">
-      <h4>Visit Us</h4>
-      <a href="https://g.page/crewittscreek?share" target="_blank">2037 Centennial Blvd<br>Independence, KY 41051</a>
+      <h2>Visit Us</h2>
+      <a href="https://g.page/crewittscreek?share" target="_blank" rel="noopener">2037 Centennial Blvd<br>Independence, KY 41051</a>
       <a href="tel:+18593595121">(859) 359-5121</a>
       <a href="mailto:crewittscreek@gmail.com">crewittscreek@gmail.com</a>
     </div>
     <div class="fc">
-      <h4>Hours</h4>
+      <h2>Hours</h2>
       <table class="fht">
         <tr><td>Sunday</td><td>11am – 8pm</td></tr>
         <tr class="cls"><td>Monday</td><td>Closed</td></tr>
@@ -788,12 +814,12 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       </table>
     </div>
     <div class="fc">
-      <h4>Navigate</h4>
-      <a onclick="showPage('home')" style="cursor:pointer">Home</a>
-      <a onclick="showPage('menu')" style="cursor:pointer">Menu</a>
-      <a onclick="showPage('drinks')" style="cursor:pointer">Drinks</a>
-      <a onclick="showPage('contact')" style="cursor:pointer">Contact</a>
-      <a onclick="showPage('application')" class="apply-btn">Apply Here!</a>
+      <h2>Navigate</h2>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#drinks">Drinks</a>
+      <a href="#contact">Contact</a>
+      <a href="#application" class="apply-btn">Apply Here!</a>
     </div>
   </div>
   <div class="f-btm">© <span id="yr">2026</span> Crewitts Creek Kitchen & Bar, All rights reserved.</div>
@@ -814,17 +840,28 @@ if(todayEl){todayEl.textContent=hoursData[new Date().getDay()].hours;}
 
 var yrEl=document.getElementById('yr');if(yrEl){yrEl.textContent=new Date().getFullYear();}
 
-function goReviews(){
-  showPage('home');
-  setTimeout(function(){var r=document.getElementById('reviews');if(r)r.scrollIntoView({behavior:'smooth'});},60);
+function loadMap(){
+  var b=document.getElementById('map-box');
+  b.innerHTML='<iframe title="Map to Crewitts Creek Kitchen &amp; Bar" src="https://maps.google.com/maps?q=2037+Centennial+Blvd,+Independence,+KY+41051&z=15&output=embed" style="width:100%;height:100%;min-height:300px;border:0;display:block" allowfullscreen></iframe>';
 }
-
-function showPage(id){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+function route(){
+  var h=(location.hash||'#home').slice(1);
+  if(h==='reviews'){showPage('home',true);var r=document.getElementById('reviews');if(r)r.scrollIntoView({behavior:'smooth'});setNav('reviews');return;}
+  if(!document.getElementById('page-'+h))h='home';
+  showPage(h);
+}
+function setNav(id){
   document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
-  var pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');
   var nv=document.getElementById('nav-'+id);if(nv)nv.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('hashchange',route);
+if(location.hash)route();
+
+function showPage(id,noScroll){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  var pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');
+  setNav(id);
+  if(!noScroll)window.scrollTo({top:0});
 }
 
 function subContact(){
