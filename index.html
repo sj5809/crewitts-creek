@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Crewitts Creek Kitchen & Bar — American kitchen & bar in Independence, KY. Handcrafted food, cold drinks, good times.">
+<meta name="description" content="Crewitts Creek Kitchen & Bar in Independence, KY — rated 4.5 stars by 1,400+ Google reviewers. Famous mac & cheese, scratch-made comfort food, craft beer, patio seating, and trivia nights.">
 <title>Crewitts Creek Kitchen & Bar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -204,6 +204,36 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
 .fht tr.cls td{color:#1e3450}
 .f-btm{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;text-align:center;font-size:12px;color:#1e3450;max-width:920px;margin:0 auto}
 
+
+/* RATING BADGE + REVIEWS */
+.rate-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:22px;backdrop-filter:blur(4px)}
+.rate-badge .stars{color:#FFC94D;letter-spacing:1px}
+.rate-badge:hover{background:rgba(255,255,255,.18)}
+.reviews{background:#fff;padding:64px 20px}
+.rev-head{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-bottom:30px}
+.rev-score{text-align:center;background:var(--navy);color:#fff;border-radius:16px;padding:22px 30px}
+.rev-score .big{font-family:'Playfair Display',serif;font-size:54px;font-weight:700;line-height:1}
+.rev-score .stars{color:#FFC94D;font-size:18px;letter-spacing:2px;margin:6px 0 4px}
+.rev-score .cnt{font-size:12px;color:#9fc0de}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag-pill{background:var(--bg);border:1px solid var(--border);color:var(--navy);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:500}
+.tag-pill b{color:var(--blue);font-weight:700;margin-left:4px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.rev{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:22px}
+.rev .stars{color:#F5A623;font-size:14px;letter-spacing:2px;margin-bottom:8px}
+.rev p{color:var(--text);font-size:14px;line-height:1.7;margin-bottom:14px}
+.rev .who{font-size:12px;color:var(--muted);font-weight:600}
+.rev .who span{font-weight:400}
+.rev-foot{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:26px}
+.rev-foot small{color:var(--muted);font-size:12px}
+.amen{background:var(--bg);padding:54px 20px}
+.amen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:22px}
+.amen-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--navy);font-weight:500}
+.amen-item .ti{font-size:19px;color:var(--blue)}
+.loc-map{padding:0;overflow:hidden;min-height:300px;background:var(--navy)}
+.loc-map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+@media(max-width:780px){.rev-head{grid-template-columns:1fr}.rev-score{justify-self:start}}
+
 /* RESPONSIVE */
 @media(max-width:780px){
   .about-inner,.loc-card,.c-layout{grid-template-columns:1fr}
@@ -228,6 +258,17 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   .stats{grid-template-columns:1fr 1fr}
 }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Crewitts Creek Kitchen & Bar","url":"https://sj5809.github.io/crewitts-creek/","telephone":"+1-859-359-5121","email":"crewittscreek@gmail.com","priceRange":"$$","servesCuisine":["American","Comfort Food"],"acceptsReservations":true,
+"address":{"@type":"PostalAddress","streetAddress":"2037 Centennial Blvd","addressLocality":"Independence","addressRegion":"KY","postalCode":"41051","addressCountry":"US"},
+"geo":{"@type":"GeoCoordinates","latitude":38.9296431,"longitude":-84.5423764},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"14:00","closes":"21:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"14:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"11:00","closes":"20:00"}],
+"sameAs":["https://www.facebook.com/crewittscreek/","https://www.instagram.com/crewittscreek/"]}
+</script>
 </head>
 <body>
 
@@ -250,6 +291,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
     <a class="active" id="nav-home" onclick="showPage('home')">Home</a>
     <a id="nav-menu" onclick="showPage('menu')">Menu</a>
     <a id="nav-drinks" onclick="showPage('drinks')">Drinks</a>
+    <a id="nav-reviews" onclick="goReviews()">Reviews</a>
     <a id="nav-contact" onclick="showPage('contact')">Contact</a>
   </div>
 </nav>
@@ -262,11 +304,13 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="eyebrow">Independence, Kentucky · Est. 1837</div>
+      <a class="rate-badge" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener"><span class="stars">★★★★★</span> 4.5 · 1,448 Google reviews</a>
       <h1>Welcome to<br><em>The Creek</em></h1>
-      <p>Handcrafted comfort food, cold beers on tap, and a place that feels like home — right here in Northern KY.</p>
+      <p>Scratch-made comfort food, famous mac &amp; cheese, cold beer on tap, and a patio worth lingering on — right here in Northern KY.</p>
       <div class="btns">
         <button class="btn btn-p" onclick="showPage('menu')"><i class="ti ti-tools-kitchen-2"></i> View Our Menu</button>
         <button class="btn btn-o" onclick="showPage('drinks')"><i class="ti ti-beer"></i> View Our Drinks</button>
+        <a class="btn btn-o" href="tel:+18593595121"><i class="ti ti-phone"></i> Call Us</a>
       </div>
     </div>
   </div>
@@ -291,13 +335,13 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <div class="sec-label">About The Creek</div>
         <div class="sec-title">Your Neighborhood Kitchen & Bar</div>
         <p>Crewitts Creek Kitchen & Bar is Independence, Kentucky's go-to spot for real comfort food done right. With a full sports bar and a crew that treats you like family — come hungry, come thirsty.</p>
-        <p>Known for our signature Mac N Cheese, hand-pattied 8oz Angus burgers, Yard Bird fried chicken, and 20+ craft beers on tap. Your home for UK Basketball.</p>
+        <p>Opened in June 2017 by two Independence neighbors, we've grown into one of Northern Kentucky's most-reviewed local restaurants. Known for our signature Mac N Cheese, hand-pattied 8oz Angus burgers, Yard Bird fried chicken, and 20+ craft beers on tap. Your home for UK Basketball.</p>
       </div>
       <div class="stats">
         <div class="stat"><div class="num">20+</div><div class="lbl">Beers on Tap</div></div>
         <div class="stat"><div class="num">8oz</div><div class="lbl">Angus Burgers</div></div>
-        <div class="stat"><div class="num">94%</div><div class="lbl">Recommend Us</div></div>
-        <div class="stat"><div class="num">$$</div><div class="lbl">Great Value</div></div>
+        <div class="stat"><div class="num">4.5★</div><div class="lbl">1,448 Google Reviews</div></div>
+        <div class="stat"><div class="num">$10–20</div><div class="lbl">Typical Per Person</div></div>
       </div>
     </div>
   </div>
@@ -330,6 +374,64 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
     </div>
   </div>
 
+
+  <div class="reviews" id="reviews">
+    <div class="con">
+      <div class="sec-label">Loved by Locals</div>
+      <div class="sec-title">1,400+ Neighbors Can't Be Wrong</div>
+      <div class="rev-head">
+        <div class="rev-score"><div class="big">4.5</div><div class="stars">★★★★★</div><div class="cnt">1,448 Google reviews</div></div>
+        <div>
+          <div class="sec-sub" style="margin-bottom:0;max-width:none">Here's what reviewers mention most. Number of reviews that name each dish or feature:</div>
+          <div class="tags">
+            <span class="tag-pill">Mac &amp; Cheese<b>52</b></span>
+            <span class="tag-pill">Pot Roast<b>12</b></span>
+            <span class="tag-pill">Outdoor Seating<b>12</b></span>
+            <span class="tag-pill">Fried Green Tomatoes<b>12</b></span>
+            <span class="tag-pill">BLT<b>12</b></span>
+            <span class="tag-pill">Cornbread<b>11</b></span>
+            <span class="tag-pill">Fried Chicken<b>8</b></span>
+            <span class="tag-pill">Mashed Sweet Potatoes<b>6</b></span>
+            <span class="tag-pill">Poutine<b>5</b></span>
+            <span class="tag-pill">Meatloaf<b>4</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="rev-grid">
+        <div class="rev"><p>Found us while in town for a kid's soccer game and called us one of the best restaurants in the area.</p><div class="who">Ed P. <span>· Google Local Guide</span></div></div>
+        <div class="rev"><p>Every employee was friendly and greeted them, the food was well seasoned, and the portions were generous.</p><div class="who">Dara R. <span>· Google review</span></div></div>
+        <div class="rev"><p>Tucked off the beaten path but worth the drive. Everything they ordered was delicious, especially the homestyle meatloaf.</p><div class="who">B. S. <span>· Google Local Guide</span></div></div>
+        <div class="rev"><p>Came back twice in three weeks. Loved the mac &amp; cheese and strawberry salad, plus a huge menu and great service.</p><div class="who">Jeff M. <span>· Google Local Guide</span></div></div>
+      </div>
+      <div class="rev-foot">
+        <a class="btn btn-p" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener"><i class="ti ti-brand-google"></i> Read All Reviews on Google</a>
+        <a class="btn btn-c" style="padding:13px 22px;font-size:15px;border-radius:8px;text-decoration:none" href="https://www.google.com/maps/place/Crewitts+Creek+Kitchen+%26+Bar/@38.9296431,-84.5423764,17z/data=!4m8!3m7!1s0x8841beb88e142a55:0x10c041b51ed4666a!8m2!3d38.9296431!4d-84.5423764!9m1!1b1!16s%2Fg%2F11g8kcmh73" target="_blank" rel="noopener">Leave a Review</a>
+        <small>Reviews paraphrased from Google. Rating and counts as of Oct 15, 2026.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="amen">
+    <div class="con">
+      <div class="sec-label">Good to Know</div>
+      <div class="sec-title" style="margin-bottom:0">Everything You Need for a Great Night Out</div>
+      <div class="amen-grid">
+        <div class="amen-item"><i class="ti ti-armchair"></i>Patio &amp; outdoor seating</div>
+        <div class="amen-item"><i class="ti ti-calendar-check"></i>Accepts reservations</div>
+        <div class="amen-item"><i class="ti ti-baby-carriage"></i>Kids' menu &amp; high chairs</div>
+        <div class="amen-item"><i class="ti ti-users-group"></i>Great for groups</div>
+        <div class="amen-item"><i class="ti ti-glass-cocktail"></i>Happy hour drinks</div>
+        <div class="amen-item"><i class="ti ti-beer"></i>Full bar &amp; craft beer</div>
+        <div class="amen-item"><i class="ti ti-help-circle"></i>Trivia night</div>
+        <div class="amen-item"><i class="ti ti-egg-fried"></i>Brunch &amp; lunch</div>
+        <div class="amen-item"><i class="ti ti-leaf"></i>Vegetarian options</div>
+        <div class="amen-item"><i class="ti ti-wheelchair"></i>Wheelchair accessible</div>
+        <div class="amen-item"><i class="ti ti-parking"></i>Free parking lot</div>
+        <div class="amen-item"><i class="ti ti-wifi"></i>Free Wi-Fi</div>
+      </div>
+    </div>
+  </div>
+
   <div class="hrs">
     <div class="hrs-grid">
       <div class="hrs-block">
@@ -337,10 +439,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
         <table class="ht">
           <tr><td>Sunday</td><td>11am – 8pm</td></tr>
           <tr class="cls"><td>Monday</td><td>Closed</td></tr>
-          <tr><td>Tuesday</td><td>4pm – 9pm</td></tr>
-          <tr><td>Wednesday</td><td>4pm – 9pm</td></tr>
-          <tr><td>Thursday</td><td>4pm – 9pm</td></tr>
-          <tr><td>Friday</td><td>4pm – 10pm</td></tr>
+          <tr><td>Tuesday</td><td>2pm – 9pm</td></tr>
+          <tr><td>Wednesday</td><td>2pm – 9pm</td></tr>
+          <tr><td>Thursday</td><td>2pm – 9pm</td></tr>
+          <tr><td>Friday</td><td>2pm – 10pm</td></tr>
           <tr><td>Saturday</td><td>11am – 10pm</td></tr>
         </table>
       </div>
@@ -364,10 +466,7 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <div class="sec-title" style="margin-bottom:26px">We're Easy to Find</div>
       <div class="loc-card">
         <div class="loc-map">
-          <i class="ti ti-map-pin"></i>
-          <h3>Crewitts Creek Kitchen & Bar</h3>
-          <p>2037 Centennial Blvd<br>Independence, KY 41051</p>
-          <a href="https://g.page/crewittscreek?share" target="_blank" class="btn btn-p btn-sm">Open in Google Maps</a>
+          <iframe title="Map to Crewitts Creek Kitchen &amp; Bar" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=2037+Centennial+Blvd,+Independence,+KY+41051&amp;z=15&amp;output=embed"></iframe>
         </div>
         <div class="loc-info">
           <div class="loc-row">
@@ -384,11 +483,11 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
           </div>
           <div class="loc-row">
             <i class="ti ti-car"></i>
-            <div class="loc-row-text"><strong>Parking & Options</strong><span>Free parking · Dine-in · Outdoor seating · Curbside pickup</span></div>
+            <div class="loc-row-text"><strong>Parking & Options</strong><span>Free parking lot · Dine-in · Takeout · Patio seating · Reservations accepted</span></div>
           </div>
           <div class="loc-row">
             <i class="ti ti-device-tv"></i>
-            <div class="loc-row-text"><strong>Sports Bar</strong><span>Multiple TVs · UK Basketball · Trivia nights</span></div>
+            <div class="loc-row-text"><strong>Sports Bar</strong><span>Multiple TVs · UK Basketball · Trivia nights · Happy hour</span></div>
           </div>
         </div>
       </div>
@@ -609,10 +708,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
           <table class="aht">
             <tr><td>Sunday</td><td>11am – 8pm</td></tr>
             <tr class="cls"><td>Monday</td><td>Closed</td></tr>
-            <tr><td>Tuesday</td><td>4pm – 9pm</td></tr>
-            <tr><td>Wednesday</td><td>4pm – 9pm</td></tr>
-            <tr><td>Thursday</td><td>4pm – 9pm</td></tr>
-            <tr><td>Friday</td><td>4pm – 10pm</td></tr>
+            <tr><td>Tuesday</td><td>2pm – 9pm</td></tr>
+            <tr><td>Wednesday</td><td>2pm – 9pm</td></tr>
+            <tr><td>Thursday</td><td>2pm – 9pm</td></tr>
+            <tr><td>Friday</td><td>2pm – 10pm</td></tr>
             <tr><td>Saturday</td><td>11am – 10pm</td></tr>
           </table>
         </div>
@@ -681,10 +780,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <table class="fht">
         <tr><td>Sunday</td><td>11am – 8pm</td></tr>
         <tr class="cls"><td>Monday</td><td>Closed</td></tr>
-        <tr><td>Tuesday</td><td>4pm – 9pm</td></tr>
-        <tr><td>Wednesday</td><td>4pm – 9pm</td></tr>
-        <tr><td>Thursday</td><td>4pm – 9pm</td></tr>
-        <tr><td>Friday</td><td>4pm – 10pm</td></tr>
+        <tr><td>Tuesday</td><td>2pm – 9pm</td></tr>
+        <tr><td>Wednesday</td><td>2pm – 9pm</td></tr>
+        <tr><td>Thursday</td><td>2pm – 9pm</td></tr>
+        <tr><td>Friday</td><td>2pm – 10pm</td></tr>
         <tr><td>Saturday</td><td>11am – 10pm</td></tr>
       </table>
     </div>
@@ -697,21 +796,28 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <a onclick="showPage('application')" class="apply-btn">Apply Here!</a>
     </div>
   </div>
-  <div class="f-btm">© 2021 Crewitts Creek Kitchen & Bar, All rights reserved.</div>
+  <div class="f-btm">© <span id="yr">2026</span> Crewitts Creek Kitchen & Bar, All rights reserved.</div>
 </footer>
 
 <script>
 var hoursData=[
   {day:'Sunday',hours:'11am – 8pm'},
   {day:'Monday',hours:'Closed'},
-  {day:'Tuesday',hours:'4pm – 9pm'},
-  {day:'Wednesday',hours:'4pm – 9pm'},
-  {day:'Thursday',hours:'4pm – 9pm'},
-  {day:'Friday',hours:'4pm – 10pm'},
+  {day:'Tuesday',hours:'2pm – 9pm'},
+  {day:'Wednesday',hours:'2pm – 9pm'},
+  {day:'Thursday',hours:'2pm – 9pm'},
+  {day:'Friday',hours:'2pm – 10pm'},
   {day:'Saturday',hours:'11am – 10pm'}
 ];
 var todayEl=document.getElementById('todays-hours');
 if(todayEl){todayEl.textContent=hoursData[new Date().getDay()].hours;}
+
+var yrEl=document.getElementById('yr');if(yrEl){yrEl.textContent=new Date().getFullYear();}
+
+function goReviews(){
+  showPage('home');
+  setTimeout(function(){var r=document.getElementById('reviews');if(r)r.scrollIntoView({behavior:'smooth'});},60);
+}
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
