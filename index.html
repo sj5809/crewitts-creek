@@ -172,6 +172,11 @@ nav{background:var(--navy);padding:0 20px;display:flex;align-items:center;justif
 .fsub:hover{background:#155a9e}
 .f-ok{display:none;background:#e8f5e9;border:1px solid #81c784;border-radius:8px;padding:14px 18px;color:#2e7d32;font-size:13px;font-weight:500;text-align:center;margin-top:14px}
 .f-ok.show{display:block}
+.f-err{display:none;background:#fdecea;border:1px solid #e57373;border-radius:8px;padding:12px 16px;color:#b71c1c;font-size:13px;font-weight:500;text-align:center;margin-top:14px}
+.f-err.show{display:block}
+.f-err a{color:#b71c1c;font-weight:700}
+.fsub[disabled]{opacity:.7;cursor:wait}
+.hp{position:absolute!important;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
 .c-aside{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px}
 .ab{margin-bottom:20px}.ab:last-child{margin-bottom:0}
 .ab h2{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
@@ -717,13 +722,15 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
   <div class="form-sec">
     <div class="c-layout">
       <div class="fw">
-        <div class="fg"><label for="cn">Name</label><input type="text" id="cn" placeholder="Your name" required></div>
-        <div class="fg"><label for="ce">Email</label><input type="email" id="ce" placeholder="your@email.com" required></div>
-        <div class="fg"><label for="cp">Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="tel" id="cp" placeholder="(555) 000-0000"></div>
+        <div class="fg"><label for="cn">Name</label><input type="text" id="cn" placeholder="Your name" autocomplete="name" required></div>
+        <div class="fg"><label for="ce">Email</label><input type="email" id="ce" placeholder="your@email.com" autocomplete="email" required></div>
+        <div class="fg"><label for="cp">Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="tel" id="cp" placeholder="(555) 000-0000" autocomplete="tel"></div>
         <div class="fg"><label for="cs">Subject</label><input type="text" id="cs" placeholder="What's this about?" required></div>
         <div class="fg"><label for="cm">Message</label><textarea id="cm" placeholder="Write your message here..." required></textarea></div>
-        <button class="fsub" onclick="subContact()">Send Message</button>
-        <div class="f-ok" id="c-ok"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Message sent! We'll get back to you soon.</div>
+        <div class="hp" aria-hidden="true"><label for="c-web">Leave this field empty</label><input type="text" id="c-web" name="website" tabindex="-1" autocomplete="off"></div>
+        <button class="fsub" id="c-btn" type="button" onclick="subContact()">Send Message</button>
+        <div class="f-err" id="c-err" role="alert"></div>
+        <div class="f-ok" id="c-ok" role="status"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Message sent! We'll get back to you soon.</div>
       </div>
       <div class="c-aside">
         <div class="ab"><h2>Call Us</h2><a href="tel:+18593595121" class="aside-ph">(859) 359-5121</a></div>
@@ -766,9 +773,9 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
       <div class="perk"><svg class="ti" aria-hidden="true"><use href="#i-star"/></svg>Local community favorite</div>
     </div>
     <div class="fw" style="max-width:100%">
-      <div class="fg"><label for="an">Full Name</label><input type="text" id="an" placeholder="Your full name" required></div>
-      <div class="fg"><label for="ae">Email</label><input type="email" id="ae" placeholder="your@email.com" required></div>
-      <div class="fg"><label for="aph">Phone</label><input type="tel" id="aph" placeholder="(555) 000-0000" required></div>
+      <div class="fg"><label for="an">Full Name</label><input type="text" id="an" placeholder="Your full name" autocomplete="name" required></div>
+      <div class="fg"><label for="ae">Email</label><input type="email" id="ae" placeholder="your@email.com" autocomplete="email" required></div>
+      <div class="fg"><label for="aph">Phone</label><input type="tel" id="aph" placeholder="(555) 000-0000" autocomplete="tel" required></div>
       <div class="fg"><label for="ap">Position</label>
         <select id="ap" required>
           <option value="" disabled selected>Please select an option</option>
@@ -780,8 +787,10 @@ footer{background:var(--navy);color:#7a9ab8;padding:50px 20px 24px}
           <option>Dishwasher</option>
         </select>
       </div>
-      <button class="fsub" onclick="subApp()">Submit Application</button>
-      <div class="f-ok" id="a-ok"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Application submitted! We'll review it and reach out soon.</div>
+      <div class="hp" aria-hidden="true"><label for="a-web">Leave this field empty</label><input type="text" id="a-web" name="website" tabindex="-1" autocomplete="off"></div>
+      <button class="fsub" id="a-btn" type="button" onclick="subApp()">Submit Application</button>
+      <div class="f-err" id="a-err" role="alert"></div>
+      <div class="f-ok" id="a-ok" role="status"><svg class="ti" style="margin-right:5px" aria-hidden="true"><use href="#i-circle-check"/></svg>Application submitted! We'll review it and reach out soon.</div>
     </div>
   </div>
 </div>
@@ -868,29 +877,59 @@ function showPage(id,noScroll){
   if(!noScroll)window.scrollTo({top:0});
 }
 
+/* ===== FORMS ===================================================
+   Paste the Google Apps Script "Web app" URL (ends in /exec) below.
+   While it is empty, forms fall back to opening the visitor's email app. */
+var FORM_ENDPOINT='';
+
+function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function showMsg(prefix,kind,html){
+  var ok=document.getElementById(prefix+'-ok'),err=document.getElementById(prefix+'-err');
+  ok.classList.remove('show');err.classList.remove('show');
+  var el=null;
+  if(kind==='ok'){ok.classList.add('show');el=ok;}
+  else if(kind==='err'){err.innerHTML=html;err.classList.add('show');el=err;}
+  if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+var CALL_LINK=' Or call us at <a href="tel:+18593595121">(859) 359-5121</a>.';
+
+function sendForm(prefix,data,mailSubject,mailBody,clearIds){
+  var btn=document.getElementById(prefix+'-btn');
+  if(!FORM_ENDPOINT){
+    window.location.href='mailto:crewittscreek@gmail.com?subject='+encodeURIComponent(mailSubject)+'&body='+encodeURIComponent(mailBody);
+    showMsg(prefix,'ok');return;
+  }
+  var label=btn.textContent;btn.disabled=true;btn.textContent='Sending…';showMsg(prefix);
+  fetch(FORM_ENDPOINT,{method:'POST',body:new URLSearchParams(data)})
+    .then(function(r){return r.json();})
+    .then(function(res){
+      if(res&&res.ok){showMsg(prefix,'ok');clearIds.forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});}
+      else{showMsg(prefix,'err',((res&&res.error)||'Something went wrong.')+CALL_LINK);}
+    })
+    .catch(function(){showMsg(prefix,'err','We couldn’t send that right now.'+CALL_LINK);})
+    .then(function(){btn.disabled=false;btn.textContent=label;});
+}
+
+var EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function subContact(){
-  var n=document.getElementById('cn').value.trim();
-  var e=document.getElementById('ce').value.trim();
-  var s=document.getElementById('cs').value.trim();
-  var m=document.getElementById('cm').value.trim();
-  if(!n||!e||!s||!m){alert('Please fill in all required fields.');return;}
-  var ph=document.getElementById('cp').value.trim();
-  var sub=encodeURIComponent('Website Inquiry \u2013 '+s);
-  var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nPhone: '+(ph||'Not provided')+'\nSubject: '+s+'\n\nMessage:\n'+m);
-  window.location.href='mailto:crewittscreek@gmail.com?subject='+sub+'&body='+body;
-  document.getElementById('c-ok').classList.add('show');
+  var n=val('cn'),e=val('ce'),ph=val('cp'),s=val('cs'),m=val('cm');
+  if(!n||!e||!s||!m){showMsg('c','err','Please fill in your name, email, subject and message.');return;}
+  if(!EMAIL_RE.test(e)){showMsg('c','err','Please enter a valid email address.');return;}
+  sendForm('c',{formType:'contact',name:n,email:e,phone:ph,subject:s,message:m,website:val('c-web')},
+    'Website Inquiry – '+s,
+    'Name: '+n+'\nEmail: '+e+'\nPhone: '+(ph||'Not provided')+'\nSubject: '+s+'\n\nMessage:\n'+m,
+    ['cn','ce','cp','cs','cm']);
 }
 
 function subApp(){
-  var n=document.getElementById('an').value.trim();
-  var e=document.getElementById('ae').value.trim();
-  var p=document.getElementById('aph').value.trim();
-  var pos=document.getElementById('ap').value;
-  if(!n||!e||!p||!pos){alert('Please fill in all required fields.');return;}
-  var sub=encodeURIComponent('Employment Application \u2013 '+pos);
-  var body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\nPhone: '+p+'\nPosition Applied For: '+pos);
-  window.location.href='mailto:crewittscreek@gmail.com?subject='+sub+'&body='+body;
-  document.getElementById('a-ok').classList.add('show');
+  var n=val('an'),e=val('ae'),p=val('aph'),pos=val('ap');
+  if(!n||!e||!p||!pos){showMsg('a','err','Please fill in your name, email, phone and position.');return;}
+  if(!EMAIL_RE.test(e)){showMsg('a','err','Please enter a valid email address.');return;}
+  sendForm('a',{formType:'application',name:n,email:e,phone:p,position:pos,website:val('a-web')},
+    'Employment Application – '+pos,
+    'Name: '+n+'\nEmail: '+e+'\nPhone: '+p+'\nPosition Applied For: '+pos,
+    ['an','ae','aph']);
 }
 </script>
 </body>
